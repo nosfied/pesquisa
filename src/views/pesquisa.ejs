@@ -1,0 +1,263 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+   
+<div class="container">
+  <main>
+    <section class="py-2 text-center secao">
+      <div style="margin-top: 50px;" class="py-4 text-center">
+        <h2>PESQUISA - CERTIDÕES</h2>
+      </div> 
+      <form>
+        <input type="hidden" id="token" name="_csrf" value="<%= csrfToken %>">
+      <div class="py-2 text-center">
+        <h4>Parâmetros da Busca</h2>
+        
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Digite o nome completo incluindo acentos</label>
+              <input type="text" id="pesquisaNome" name="pesquisaNome" class="form-control" required>                
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Digite o CPF (Apenas Números)</label>
+              <input type="text" id="pesquisaCpf" name="pesquisaCpf" class="form-control" required>                
+            </div>
+            
+            <table class="table">              
+              <tbody>
+                
+                <!-- TRF1 -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoestrf1" class="btn btn-outline-secondary btnList" type="button" id="bttrf1">TRF 1</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoestrf1">                  
+                  <td>                    
+                    <table class="table">                      
+                      <tbody>
+                        <tr>                        
+                          <td style="width: 100px;" scope="row">
+                            
+                            <button id="btFormTrf1" rota="/pesquisa/trf1" link="linkTrf1" opcoes="boxtrf1" class="w-40 btn btn-primary btn-sm btOrgao" type="submit">Buscar</button>
+                            <input type="hidden" id="linkTrf1" value="https://sistemas.trf1.jus.br/certidao/#/solicitacao">
+
+                          </td> 
+                          <td style="width: 400px;">                           
+                              <div class="form-check opcoesBuscas">
+                                <input class="form-check-input box boxtrf1" select="0" type="checkbox" value="criminal" id="trf1Criminal" name="trf1">
+                                <label class="form-check-label itemOpcao" for="trf1Criminal">
+                                  Certidão Criminal 1º e 2º Grau
+                                </label>
+                              </div>
+                              <div class="form-check opcoesBuscas">
+                                <input class="form-check-input box boxtrf1" select="0" type="checkbox" value="civel" id="trf1Civel" name="trf1">
+                                <label class="form-check-label itemOpcao" for="trf1Civel">
+                                  Certidão Cível 1º e 2º Grau
+                                </label>
+                              </div>                              
+                          </td>
+                          <td><p style="margin: 2px; width: 50px;"><strong>TRF 1</strong></p></td>
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr id="boxtrf1">                                                     
+                                                    
+                        </tr>                                                
+                      </tbody>
+                    </table>                  
+                  </td>                  
+                </tr>
+                
+                <!-- TRF2 -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoestrf2" class="btn btn-outline-secondary btnList" type="button" id="bttrf2">TRF 2</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoestrf2">                  
+                  <td>
+                    <table class="table">                      
+                      <tbody>
+                        <tr>                        
+                          <td style="width: 100px;" scope="row">
+                            
+                            <button id="btFormTrf2" rota="/pesquisa/trf2" link="linkTrf2" opcoes="boxtrf2" class="w-40 btn btn-primary btn-sm btOrgao" type="submit">Buscar</button>
+                            <input type="hidden" id="linkTrf2" value="https://certidoes.trf2.jus.br/certidoes/#/principal/solicitar">
+
+                          </td>
+                          <td style="width: 400px;">
+                              <div class="form-check opcoesBuscas">
+                                <input class="form-check-input box boxtrf2" select="0" type="checkbox" value="criminal" id="trf2Criminal" name="trf2">
+                                <label class="form-check-label itemOpcao" for="trf2Criminal">
+                                  Certidão Criminal 1º e 2º Grau
+                                </label>
+                              </div>
+                              <div class="form-check opcoesBuscas">
+                                <input class="form-check-input box boxtrf2" select="0" type="checkbox" value="civel" id="trf2Civel" name="trf2">
+                                <label class="form-check-label itemOpcao" for="trf2Civel">
+                                  Certidão Cível 1º e 2º Grau
+                                </label>
+                              </div>
+                          </td>
+                          <td><p style="margin: 2px; width: 50px;"><strong>TRF 2</strong></p></td>
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr id="boxtrf2">
+                           
+                        </tr>                         
+                      </tbody>
+                    </table>
+                  </td>                  
+                </tr>
+
+                <!-- TRF3 -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoestrf3" class="btn btn-outline-secondary btnList" type="button" id="bttrf3">TRF 3</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoestrf3">                  
+                  <td>
+                    <table class="table">                      
+                      <tbody>
+                        <tr>                        
+                          <td style="width: 100px;" scope="row">
+
+                            <button id="btFormTrf3" rota="/pesquisa/trf3" link="linkTrf3" opcoes="boxtrf3" class="w-40 btn btn-primary btn-sm btOrgao" type="submit">Buscar</button>
+                            <input type="hidden" id="linkTrf3" value="https://www.trf3.jus.br/">
+
+                          </td>
+                          <td style="width: 400px;">
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtrf3" select="0" type="checkbox" value="criminal" id="trf3Criminal" name="trf3">
+                              <label class="form-check-label itemOpcao" for="trf3Criminal">
+                                Certidão Criminal 1º e 2º Grau
+                              </label>
+                            </div>
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtrf3" select="0" type="checkbox" value="civel" id="trf3Civel" name="trf3">
+                              <label class="form-check-label itemOpcao" for="trf3Civel">
+                                Certidão Cível 1º e 2º Grau
+                              </label>
+                            </div>
+                          </td>
+                          <td><p style="margin: 2px; width: 50px;"><strong>TRF 3</strong></p></td>
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr id="boxtrf3">                                                     
+                                                    
+                        </tr>                        
+                      </tbody>
+                    </table>
+                  </td>                  
+                </tr>
+
+                <!-- TRF4 -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoestrf4" class="btn btn-outline-secondary btnList" type="button" id="bttrf4">TRF 4</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoestrf4">                  
+                  <td>
+                    <table class="table">                      
+                      <tbody>
+                        <tr>                        
+                          <td style="width: 100px;" scope="row">
+
+                            <button id="btFormTrf4" rota="/pesquisa/trf4" link="linkTrf4" opcoes="boxtrf4" class="w-40 btn btn-primary btn-sm btOrgao" type="submit">Buscar</button>
+                            <input type="hidden" id="linkTrf4" value="https://www2.trf4.jus.br/trf4/processos/certidao/index.php">
+
+                          </td>
+                          <td style="width: 400px;">
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtrf4" select="0" type="checkbox" value="criminal" id="trf4Criminal" name="trf4">
+                              <label class="form-check-label itemOpcao" for="trf4Criminal">
+                                Certidão Criminal 1º e 2º Grau
+                              </label>
+                            </div>
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtrf4" select="0" type="checkbox" value="civel" id="trf4Civel" name="trf4">
+                              <label class="form-check-label itemOpcao" for="trf4Civel">
+                                Certidão Cível 1º e 2º Grau
+                              </label>
+                            </div>
+                          </td>
+                          <td><p style="margin: 2px; width: 50px;"><strong>TRF 4</strong></p></td>
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr id="boxtrf4">                                                     
+                                                    
+                        </tr>                        
+                      </tbody>
+                    </table>
+                  </td>                  
+                </tr>
+
+                <!-- TRF5 -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoestrf5" class="btn btn-outline-secondary btnList" type="button" id="bttrf5">TRF 5</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoestrf5">                  
+                  <td>
+                    <table class="table">                      
+                      <tbody>
+                        <tr>                        
+                          <td style="width: 100px;" scope="row">
+
+                            <button id="btFormTrf5" rota="/pesquisa/trf5" link="linkTrf5" opcoes="boxtrf5" class="w-40 btn btn-primary btn-sm btOrgao" type="submit">Buscar</button>
+                            <input type="hidden" id="linkTrf5" value="https://www4.trf5.jus.br/certidoes/">
+
+                          </td>
+                          <td style="width: 400px;">
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtrf5" select="0" type="checkbox" value="criminal" id="trf5Criminal" name="trf5">
+                              <label class="form-check-label itemOpcao" for="trf5Criminal">
+                                Certidão Criminal 1º e 2º Grau
+                              </label>
+                            </div>
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtrf5" select="0" type="checkbox" value="civel" id="trf5Civel" name="trf5">
+                              <label class="form-check-label itemOpcao" for="trf5Civel">
+                                Certidão Cível 1º e 2º Grau
+                              </label>
+                            </div>
+                          </td>
+                          <td><p style="margin: 2px; width: 50px;"><strong>TRF 5</strong></p></td>
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr id="boxtrf5">                                                     
+                                                    
+                        </tr>                         
+                      </tbody>
+                    </table>
+                  </td>                  
+                </tr> 
+              
+              </tbody>
+            </table>
+            <div>
+              <button id="btProcessar" type="submit" class="w-25 btn btn-primary btn-lg" style="background-color: #060761;">Buscar Todas</button>                
+              <button id="btLimpar" class="w-25 btn btn-primary btn-lg" style="background-color: #060761;">Limpar</button>                
+            </div>
+          </div>                                       
+        </div>
+      </form>
+    </section>    
+  </main>  
+</div>
+  
+
+<%- include('includes/footer') %>
