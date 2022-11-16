@@ -10,7 +10,7 @@ exports.limparArquivosAntigos = async function () {
     readdir(paths.files(), async (err, files)=>{
         for (const file of files){
             
-            if(file < (Date.now() - 60*60*12*1000)){
+            if(file < (Date.now() - 60*60*1000)){
                 rm(paths.files()+'\\'+file, {recursive:true, force:true});
             }                
         } 
