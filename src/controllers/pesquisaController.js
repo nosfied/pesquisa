@@ -3,6 +3,7 @@ const Trf2 = require('../models/trf2Model');
 const Trf3 = require('../models/trf3Model');
 const Trf4 = require('../models/trf4Model');
 const Trf5 = require('../models/trf5Model');
+const Tjdf = require('../models/tjdfModel');
 const path = require('path');
 
 const ERRONAOSELECT = "É preciso selecionar ao menos um documento para pesquisa.";
@@ -153,6 +154,36 @@ exports.trf5 = async (req, res) => {
       
     try {
         const result = await Trf5.trf5(req.body);
+        res.json(result);
+    } catch (error) {
+        res.json({erro: error});
+    }
+      
+}
+
+exports.tjdf = async (req, res) => {
+
+    if(req.body.documento == ""){
+        let error = ERRONAOSELECT;
+        res.json({erroValid: error});
+        return
+    }
+
+    if(req.body.nome == ""){
+        let error = ERRONOMECOMPLETO;
+        res.json({erroValid: error});
+        return
+    }
+
+    const cpf = new ValidaCPF(req.body.cpf);
+    if(!cpf.valida()) {
+        let error = ERROCPF;
+        res.json({erroValid: error});
+        return
+    }    
+      
+    try {
+        const result = await Tjdf.tjdf(req.body);
         res.json(result);
     } catch (error) {
         res.json({erro: error});

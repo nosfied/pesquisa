@@ -45,8 +45,7 @@ exports.trf5 = async (dados) => {
     const page = await browser.newPage();
     try {     
         await util.limparArquivosAntigos();    
-        await page.goto(SITE_URL, {waitUntil: 'networkidle2'});        
-        //await page.waitForSelector('#string_cpf');
+        await page.goto(SITE_URL, {waitUntil: 'networkidle2'});
         for (let index = 0; index < 10; index++) {
             await page.keyboard.press('Tab', {delay:1000});            
         }
@@ -56,10 +55,8 @@ exports.trf5 = async (dados) => {
         await page.keyboard.press('ArrowDown', {delay:1000});        
         await page.keyboard.press('Enter', {delay:1000});
         await page.waitForTimeout(6000);
-        //await page.click('#form:nome', {delay:1000});
         await page.keyboard.type(NOME,{delay:100});
         await page.keyboard.press('Tab', {delay:1000});
-        //await page.click('#form:cpfCnpj', {delay:1000});
         await page.keyboard.type(CPF,{delay:150});
         //Criação de diretório para armazenar arquivos da pesquisa
         let diretorio = await mkdir(paths.files()+`${process.env.BARRA}`+Date.now(), {recursive:true}, (err, dir)=>{

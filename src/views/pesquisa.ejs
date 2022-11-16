@@ -19,8 +19,18 @@
             </div>
 
             <div class="col-sm-6">
-              <label for="lastName" class="form-label">Digite o CPF (Apenas Números)</label>
+              <label for="cpf" class="form-label">Digite o CPF (Apenas Números)</label>
               <input type="text" id="pesquisaCpf" name="pesquisaCpf" class="form-control" required>                
+            </div>
+
+            <div class="col-sm-6">
+              <label for="nomeMae" class="form-label">Nome da mãe</label>
+              <input type="text" id="nomeMae" name="nomeMae" class="form-control" required>                
+            </div>
+
+            <div class="col-sm-6">
+              <label for="nomePai" class="form-label">Nome do pai</label>
+              <input type="text" id="nomePai" name="nomePai" class="form-control">                
             </div>
             
             <table class="table">              
@@ -244,12 +254,56 @@
                       </tbody>
                     </table>
                   </td>                  
-                </tr> 
+                </tr>
+                
+                <!-- TJDFT -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoestjdf" class="btn btn-outline-secondary btnList" type="button" id="bttjdf">TJ DISTRITO FEDERAL</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoestjdf">                  
+                  <td>
+                    <table class="table">                      
+                      <tbody>
+                        <tr>                        
+                          <td style="width: 100px;" scope="row">
+
+                            <button id="btFormtjdf" rota="/pesquisa/tjdf" link="linktjdf" opcoes="boxtjdf" class="w-40 btn btn-primary btn-sm btOrgao" type="submit">Buscar</button>
+                            <input type="hidden" id="linktjdf" value="https://cnc.tjdft.jus.br/solicitacao-externa">
+
+                          </td>
+                          <td style="width: 400px;">
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtjdf" select="0" type="checkbox" value="criminal" id="tjdfCriminal" name="tjdf">
+                              <label class="form-check-label itemOpcao" for="tjdfCriminal">
+                                Certidão Criminal 1º e 2º Grau
+                              </label>
+                            </div>
+                            <div class="form-check opcoesBuscas">
+                              <input class="form-check-input box boxtjdf" select="0" type="checkbox" value="civel" id="tjdfCivel" name="tjdf">
+                              <label class="form-check-label itemOpcao" for="tjdfCivel">
+                                Certidão Cível 1º e 2º Grau
+                              </label>
+                            </div>
+                          </td>
+                          <td><p style="margin: 2px; width: 50px;"><strong>TJ DF</strong></p></td>
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr id="boxtjdf">                                                     
+                                                    
+                        </tr>                         
+                      </tbody>
+                    </table>
+                  </td>                  
+                </tr>
               
               </tbody>
             </table>
             <div>
-              <button id="btProcessar" type="submit" class="w-25 btn btn-primary btn-lg" style="display: none; "background-color: #060761;">Buscar Todas</button>                
+              <button id="btProcessar" type="submit" class="w-25 btn btn-primary btn-lg" style="background-color: #060761; display: none;">Buscar Todas</button>                
               <button id="btLimpar" class="w-25 btn btn-primary btn-lg" style="background-color: #060761;">Limpar</button>                
             </div>
           </div>                                       

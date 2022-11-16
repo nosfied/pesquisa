@@ -21,6 +21,7 @@ route.post('/pesquisa/trf2', loginRequired, pesquisaController.trf2);
 route.post('/pesquisa/trf3', loginRequired, pesquisaController.trf3);
 route.post('/pesquisa/trf4', loginRequired, pesquisaController.trf4);
 route.post('/pesquisa/trf5', loginRequired, pesquisaController.trf5);
+route.post('/pesquisa/tjdf', loginRequired, pesquisaController.tjdf);
 route.get('/pesquisa/files/:diretorio/:cpf/:orgao', pesquisaController.download);
 
 

@@ -128,12 +128,16 @@ for (const btao of botoesOrgao) {
         }
         
         let nome = document.getElementById('pesquisaNome')
+        let nomeMae = document.getElementById('nomeMae')
+        let nomePai = document.getElementById('nomePai')
         let cpf = document.getElementById('pesquisaCpf')
         let token = document.getElementById('token')
 
         let objeto = {
             "_csrf": token.value,
             "nome": nome.value,
+            "nomeMae": nomeMae.value,
+            "nomePai": nomePai.value,
             "cpf": cpf.value,
             "documento": docs
         }            
