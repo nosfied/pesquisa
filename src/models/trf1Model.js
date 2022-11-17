@@ -124,16 +124,6 @@ exports.trf1 = async (dados) => {
             }
             
         }
-
-        if (!paginaCertidao) {
-            for (let i = 0; i < 10; i++) {
-                if (!paginaCertidao) {
-                    await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > div > form > div > div > button');
-                    await page.waitForTimeout(4000);
-                    paginaCertidao = await page.$eval('#page1', el => el.tagName);
-                }
-            }
-        }
         console.log(paginaCertidao);
         await page.waitForTimeout(3000);
         //Remover botão imprimir e Gerar arquivo pdf                
