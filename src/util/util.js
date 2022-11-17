@@ -79,7 +79,7 @@ exports.resolve_captcha_normal = async function (imagem){
 
 }
 
-async function pegarCookies(sitio){
+exports.pegarCookies = async function (sitio){
 
     //implementação e credenciais bright data
     const cookieJar = request.jar();
