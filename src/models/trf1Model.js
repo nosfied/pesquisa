@@ -109,7 +109,7 @@ exports.trf1 = async (dados) => {
             await page.waitForTimeout(5000);
             //clicar 10x no botão Emitir Certidão - tentativas
             for (let index = 0; index < 6; index++) {
-                if(paginaCertidao) return;
+                if(paginaCertidao) continue;
                 await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > div > form > div > div > button', { delay: 8000 });
                 console.log(index);                
                 await page.waitForTimeout(7000);
