@@ -72,6 +72,8 @@ exports.trf1 = async (dados) => {
         await util.limparArquivosAntigos();
         await page.setCookie(...cookies);
         await page.goto(SITE_URL, { waitUntil: 'networkidle2', timeout: 60000 });
+        await page.waitForTimeout(5000);
+        await page.goto(SITE_URL, { waitUntil: 'networkidle2', timeout: 60000 });
         //selecionar um tipo de certidão -> clique            
         await page.keyboard.press('Tab', { delay: 5000 });
         await page.keyboard.press('Tab', { delay: 1000 });

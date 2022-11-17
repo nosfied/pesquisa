@@ -27,7 +27,7 @@ puppeteer.use(
     })
 )
 
-async function pegarCookies(sitio){
+async function pegarCookies(){
 
     //implementação e credenciais bright data
     const cookieJar = request.jar();
@@ -72,35 +72,7 @@ exports.tjdf = async (dados) => {
 
     const page = await browser.newPage();
     try {     
-        await util.limparArquivosAntigos();
-        await page.setRequestInterception(true);    
-        page.on('request', (request) => {
-            const headers = request.headers();
-            headers[':authority'] = 'www.tjdft.jus.br';
-            headers[':method'] = 'GET';
-            headers[':path'] = '/';
-            headers[':scheme'] = 'https';
-            headers['accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9';
-            headers['accept-encoding'] = 'gzip, deflate, br';
-            headers['accept-language'] = 'pt,pt-BR;q=0.9';
-            headers['cache-control'] = 'max-age=0';
-            headers['cookie'] = 'da07dfacbe3d201227379ca36977cdd5=ebb983ff49866d3b8c095cace321554d; _ga=GA1.1.1380745664.1668565259; acceptCookies=true; _hjSessionUser_1406603=eyJpZCI6ImU0NDgzZDRiLTE5YTAtNTI2Ni1iZTk4LTQzOGZjMGViNmUzMSIsImNyZWF0ZWQiOjE2Njg1NjUyNTk2MTUsImV4aXN0aW5nIjp0cnVlfQ==; _hjSession_1406603=eyJpZCI6Ijc1OTg2MWM1LTFmOTMtNGI0Yi1iODk5LTFkMGFiYmY4M2I2OSIsImNyZWF0ZWQiOjE2Njg2NDQ5MTM5ODMsImluU2FtcGxlIjpmYWxzZX0=; _hjAbsoluteSessionInProgress=0; _ga_PTZQJF4TK1=GS1.1.1668647521.7.1.1668647521.0.0.0; _hjIncludedInSessionSample=0';
-            headers['referer'] = 'https://www.google.com/';
-            headers['sec-ch-ua'] = '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"';
-            headers['sec-ch-ua-mobile'] = '?0';
-            headers['sec-ch-ua-platform'] = 'Windows';
-            headers['sec-fetch-dest'] = 'document';
-            headers['sec-fetch-mode'] = 'navigate';
-            headers['sec-fetch-site'] = 'cross-site';
-            headers['sec-fetch-user'] = '?1';
-            headers['upgrade-insecure-requests'] = '1';
-            headers['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36';
-            
-            
-            request.continue({
-                headers
-            });
-        });
+        await util.limparArquivosAntigos();        
         await page.goto(SITE_URL, {waitUntil: 'networkidle2'});        
         await page.waitForTimeout(200000);
         await page.keyboard.type(CPF,{delay:150});
