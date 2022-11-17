@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer-extra');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 const paths = require('../paths/paths');
 const util = require('../util/util');
+let request = require('request-promise');
+
 
 //Plugin para deixar o puppeteer 90% indetectável
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -29,6 +31,7 @@ exports.tjdf = async (dados) => {
 
     console.log("TJDF Processando...");
     const SITE_URL = "https://cnc.tjdft.jus.br/solicitacao-externa";
+    const sitioParaCookies = 'https://www.tjdft.jus.br/';
     const CPF = dados.cpf;
     const NOME = dados.nome;        
     const NOMEMAE = dados.nomeMae;        
@@ -41,12 +44,16 @@ exports.tjdf = async (dados) => {
         ignoreHTTPSErrors: true        
     
     });
+    let cookie = await util.pegarCookies(sitioParaCookies);
+    const cookies = [{name: 'cookie', value: `${cookie}`, domain: 'https://cnc.tjdft.jus.br/solicitacao-externa'}];
+    console.log(cookies);
 
     const page = await browser.newPage();
     try {     
-        await util.limparArquivosAntigos();    
+        await util.limparArquivosAntigos();
+        await page.setCookie(...cookies);
         await page.goto(SITE_URL, {waitUntil: 'networkidle2'});        
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(200000);
         await page.keyboard.type(CPF,{delay:150});
         await page.keyboard.press('Tab', {delay:1000});            
         await page.keyboard.press('Tab', {delay:1000});            
