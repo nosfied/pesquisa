@@ -108,17 +108,18 @@ exports.trf1 = async (dados) => {
             console.log(quebrarCaptcha);
             await page.waitForTimeout(5000);
             //clicar 10x no botão Emitir Certidão - tentativas
-            for (let index = 0; index < 11; index++) {
+            for (let index = 0; index < 6; index++) {
                 if(paginaCertidao) return;
                 await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > div > form > div > div > button', { delay: 8000 });
                 console.log(index);                
-                await page.waitForTimeout(5000);
+                await page.waitForTimeout(7000);
                 paginaCertidao = await page.evaluate(() => {
                     const el = document.getElementById('page1');
-                    if (el)
+                    if (el){
                         return el.tagName;
-                    else
+                    }else{
                         return false;
+                    }
                 })                
             }
             
