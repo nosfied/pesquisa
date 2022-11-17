@@ -11,7 +11,7 @@ exports.limparArquivosAntigos = async function () {
         for (const file of files){
             
             if(file < (Date.now() - 60*60*1000)){
-                rm(paths.files()+'\\'+file, {recursive:true, force:true});
+                rm(paths.files()+`${process.env.BARRA}`+file, {recursive:true, force:true});
             }                
         } 
     });

@@ -125,6 +125,11 @@ exports.trf1 = async (dados) => {
             
         }
         console.log(paginaCertidao);
+        if(paginaCertidao == false){
+            console.log("TRF 1: Não foi possível atender o pedido ");
+            browser.close();
+            return { erro: "Não foi possível atender o pedido" };
+        }
         await page.waitForTimeout(3000);
         //Remover botão imprimir e Gerar arquivo pdf                
         await page.$eval('button', el => el.remove());

@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-extra');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 const paths = require('../paths/paths');
+const util = require('../util/util');
 //Plugin para deixar o puppeteer 90% indetectável
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 
@@ -36,7 +37,8 @@ exports.trf4 = async (dados) => {
     
     });       
     const page = await browser.newPage();
-    try {            
+    try {
+        await util.limparArquivosAntigos();
         await page.goto(SITE_URL);        
         await page.waitForSelector('#string_cpf');
         await page.click('#frmCertidao', {delay:2000});    
