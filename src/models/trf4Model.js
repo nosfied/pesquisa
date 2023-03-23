@@ -11,7 +11,7 @@ puppeteer.use(
     RecaptchaPlugin({
         provider: {
             id: '2captcha',
-            token: 'd8abbbea75f6ffcdba27b47b05923f39' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
+            token: `${process.env.KEY}` // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
         },
         visualFeedback: true, // colorize reCAPTCHAs (violet = detected, green = solved)
         solveInactiveChallenges: true,
@@ -27,7 +27,8 @@ exports.trf4 = async (dados) => {
     const CAPTCHA_SITE_KEY = "";
     const ACTION = "";
     const CPF = dados.cpf;
-    const NOME = dados.nome;        
+    const NOME = dados.nome;
+    let resultado = [];        
 
     const browser = await puppeteer.launch({
         headless: false,
@@ -86,13 +87,14 @@ exports.trf4 = async (dados) => {
             })                    
             console.log("Arquivo TRF4, PDF gerado com sucesso.");
             browser.close();
-            return {cpf: printPDF, orgao: 'trf4', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS'}
+            resultado.push({cpf: printPDF, orgao: 'trf4', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS'});
+            return resultado; 
         }       
 
     } catch (error) {        
         console.log("TRF 4 " + error);
         browser.close();
-        return { erro: error };
+        return { erro: error, result: resultado };
     }
 
 }

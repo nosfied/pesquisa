@@ -35,7 +35,6 @@ bt.addEventListener('click', () =>{
         opcoes.setAttribute('visibilidade', 'sim');
         opcoes.style.backgroundColor = '#83b8e0';            
         bt.parentElement.parentElement.parentElement.classList.add('opcaoOculta');
-        return;
     }
 
 })
@@ -68,40 +67,58 @@ for (const box of boxs) {
     })
 }
 
-// Código para abrir a url diretamente do órgão em nova aba.
-function linkEmNovaAba() {
-    let linksManual = document.getElementsByClassName('linkManual');
-    for (const link of linksManual) {
-        let linkManual = link.getAttribute('href');
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            var win = window.open(linkManual, '_blank');
-            win.focus();
-        })
-    }
-}
-
-function carregaResult(result, linha, sitio) {
+function carregaResult(result, linha, sitio, sitio2) {
     const linhaResultado = document.getElementById(linha);
     let org = linha.split('x')     
     if(!result.erroValid){
         if(!result.erro){
-            if(result.cpf.length > 15){
-                linhaResultado.innerHTML = `<td colspan="2"><p class="msgSucesso">${result.documento}</p></td>
-                <td><a href="${result.cpf}">Download</a></td> `
-            }else{
-                linhaResultado.innerHTML = `<td colspan="2"><p class="msgSucesso">${result.documento}</p></td>
-                <td colspan="2"><a href="/pesquisa/files/${result.diretorio}/${result.cpf}/${result.orgao}">Download</a></td> `
+            linhaResultado.innerHTML = '';
+            for (const res of result) {
+                if(res.cpf.length > 15){
+                    linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
+                    <td><a href="${res.cpf}" target="_blank">Download</a></td></tr>`
+                }else{
+                    linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
+                    <td colspan="2"><a href="/pesquisa/files/${res.diretorio}/${res.cpf}/${res.orgao}" target="_blank">Download</a></td></tr>`
+                }                    
             }
             
+        }else if(result.erro && result.result != ''){
+            linhaResultado.innerHTML = '';
+            for (const res of result.result) {
+                if(res.cpf.length > 15){
+                    linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
+                    <td><a href="${res.cpf}" target="_blank">Download</a></td></tr>`
+                }else{
+                    linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
+                    <td colspan="2"><a href="/pesquisa/files/${res.diretorio}/${res.cpf}/${res.orgao}" target="_blank">Download</a></td></tr>`
+                }                    
+            }            
+
+            if(sitio2 == 'hg'){
+                linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgErro">Não foi possível processar o pedido para ${org[1].toUpperCase()}, verifique os dados e tente novamente em alguns instantes.</p></td>
+                <td colspan="2"><a href="${sitio}" target="_blank">-> Link da Busca</a><br><a href="${sitio2}" target="_blank">-> Link da Busca</a></td></tr>`
+            }else{
+                linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgErro">Não foi possível processar o pedido para ${org[1].toUpperCase()}, verifique os dados e tente novamente em alguns instantes.</p></td>
+                <td colspan="2"><a href="${sitio}" target="_blank">-> Link da Busca</a></td></tr>`
+            }                
+            
         }else{
-            linhaResultado.innerHTML = `<td colspan="2"><p class="msgErro">Não foi possível processar o pedido para ${org[1].toUpperCase()}, verifique os dados e tente novamente em alguns instantes.</p></td>
-            <td colspan="2"><a class="linkManual" href="${sitio}">Link da Busca</a></td>`
-            linkEmNovaAba();
+            if(sitio2 == 'hg'){                
+                linhaResultado.innerHTML = `<tr><td colspan="2"><p class="msgErro">Não foi possível processar o pedido para ${org[1].toUpperCase()}, verifique os dados e tente novamente em alguns instantes.</p></td>
+                <td colspan="2"><a href="${sitio}" target="_blank">-> Link da Busca</a><br><a href="${sitio2}" target="_blank">-> Link da Busca</a></td></tr>`
+            }else{
+                linhaResultado.innerHTML = `<tr><td colspan="2"><p class="msgErro">Não foi possível processar o pedido para ${org[1].toUpperCase()}, verifique os dados e tente novamente em alguns instantes.</p></td>
+                <td colspan="2"><a href="${sitio}" target="_blank">-> Link da Busca</a></td></tr>`
+            } 
         }
     }else{
-        linhaResultado.innerHTML = `<td colspan="2"><p class="msgErro">${result.erroValid}</p></td>
-        <td colspan="2"><p class="msgErro">ATENÇÃO!</p></td>`
+        linhaResultado.innerHTML = '';
+        for (const err of result.erroValid) {            
+            linhaResultado.innerHTML += `<tr><td style="width: 85%;" colspan="2"><p class="msgErro">${err}</p></td>
+            <td colspan="2"><p class="msgErro">ATENÇÃO!</p></td></tr>`                           
+        }
+        
     }
 }
 
@@ -112,26 +129,52 @@ for (const btao of botoesOrgao) {
         event.preventDefault();
         let rota = btao.getAttribute('rota');
         let link = btao.getAttribute('link');
+        let link2 = btao.getAttribute('link2');
         let opcaoPesq = btao.getAttribute('opcoes');
+        let valorComarca = btao.getAttribute('comarca');
 
         const linhaResultado = document.getElementById(opcaoPesq);
         linhaResultado.innerHTML = `<td colspan="4"><div id="prog" class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" aria-label="Example with label" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Processando... Pode levar alguns minutos, Aguarde!</div>   </div></td> `
+        <div class="progress-bar progress-bar-striped progress-bar-animated" aria-label="Example with label" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Processando... Pode levar alguns minutos, Aguarde!</div>   </div></td>`
 
         let opcoesPesq = document.getElementsByClassName(opcaoPesq);
+        
         let linkOrgao = document.getElementById(link);
+        let linkOrgao2 = false;
+        let valorLinkOrgao2 = document.getElementById(link2);
+        if (valorLinkOrgao2 != null){
+            linkOrgao2 = valorLinkOrgao2;
+        }
         let docs = [];
         for (const op of opcoesPesq) {
             if(op.getAttribute('select') == '1'){
                 docs.push(op.getAttribute('value'))
             }
         }
-        
-        let nome = document.getElementById('pesquisaNome')
-        let nomeMae = document.getElementById('nomeMae')
-        let nomePai = document.getElementById('nomePai')
-        let cpf = document.getElementById('pesquisaCpf')
-        let token = document.getElementById('token')
+
+        let generosPesq = document.getElementsByClassName('generoPesq');
+        let genero;
+        for (const generoPesq of generosPesq) {
+            if(generoPesq.checked){
+                genero = generoPesq.value;
+            }
+        }
+
+        let comarca = document.getElementById(valorComarca).value;        
+        let ufRg = document.getElementById('ufRg').value;        
+        let estadoCivil = document.getElementById('estadoCivil').value;        
+        let nome = document.getElementById('pesquisaNome');
+        let dtNascimento = document.getElementById('dtNascimento');
+        let rg = document.getElementById('pesquisaRg');
+        let nomeMae = document.getElementById('nomeMae');
+        let nomePai = document.getElementById('nomePai');
+        let cpf = document.getElementById('pesquisaCpf');
+        let token = document.getElementById('token');        
+        let email = document.getElementById('pesquisaEmail');
+        let orgaoExp = document.getElementById('orgaoExp');        
+        let endereco = document.getElementById('endereco');        
+        let naturalidade = document.getElementById('naturalidade');        
+        let estadoCivilTjPI = document.getElementById('estadoCivilTjPI').value;        
 
         let objeto = {
             "_csrf": token.value,
@@ -139,7 +182,19 @@ for (const btao of botoesOrgao) {
             "nomeMae": nomeMae.value,
             "nomePai": nomePai.value,
             "cpf": cpf.value,
-            "documento": docs
+            "rg": rg.value,
+            "documento": docs,
+            "sexo": genero,
+            "nascimento": dtNascimento.value,
+            "comarca": comarca,
+            "email": email.value,
+            "orgaoExp": orgaoExp.value,
+            "ufRg": ufRg,
+            "endereco": endereco.value,
+            "estadoCivil": estadoCivil,
+            "naturalidade": naturalidade.value,
+            "estadoCivilTjPI": estadoCivilTjPI,
+
         }            
         let body = JSON.stringify(objeto);       
         
@@ -156,7 +211,7 @@ for (const btao of botoesOrgao) {
                   })
             })
             let pResult = await result.json();
-            carregaResult(pResult, opcaoPesq, linkOrgao.value);            
+            carregaResult(pResult, opcaoPesq, linkOrgao.value, linkOrgao2.value);            
 
           } catch(e) {
             console.log(e);

@@ -16,7 +16,7 @@ puppeteer.use(
     RecaptchaPlugin({
         provider: {
             id: '2captcha',
-            token: 'd8abbbea75f6ffcdba27b47b05923f39' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
+            token: `${process.env.KEY}` // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
         },
         visualFeedback: true, // colorize reCAPTCHAs (violet = detected, green = solved)
         solveInactiveChallenges: true,
@@ -28,14 +28,15 @@ puppeteer.use(
 exports.trf1 = async (dados) => {
 
     console.log("TRF1 Processando...");
-    const SITIOCOOKIES = 'https://portal.trf1.jus.br/portaltrf1/servicos/certidao-on-line/acesso-ao-sistema/';
+    const SITIOCOOKIES = 'https://portal.trf1.jus.br/portaltrf1/pagina-inicial.htm';
     const SITE_URL = "https://sistemas.trf1.jus.br/certidao/#/solicitacao";
     const CAPTCHA_SITE_KEY = "6Le8WeUUAAAAAEQ0sNuNgYdqVmklhQCSEKigDDDT";
     const ACTION = "t";
     const CPF = dados.cpf;
+    let resultado = [];        
 
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         executablePath: paths.googleChrome(),
         //userDataDir: paths.perfilChrome()
     });
@@ -46,7 +47,7 @@ exports.trf1 = async (dados) => {
     const page = await browser.newPage();
     try {
         await util.limparArquivosAntigos();
-        await page.setCookie(...cookies);
+        //await page.setCookie(...cookies);
         await page.goto(SITE_URL, { waitUntil: 'networkidle2', timeout: 60000 });
         await page.waitForTimeout(5000);
         await page.goto(SITE_URL, { waitUntil: 'networkidle2', timeout: 60000 });
@@ -65,11 +66,10 @@ exports.trf1 = async (dados) => {
         //Clicar no campo CPF
         await page.click('#mat-input-0', { delay: 2000 });
         //Digitar o número do documento
-        await page.keyboard.type(CPF, { delay: 50 });
+        await page.keyboard.type(CPF, { delay: 200 });
         // Clicar no botão -> "Emitir certidão"               
         await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > div > form > div > div > button', { delay: 3000 });
-        //await page.waitForNavigation({waitUntil: 'load'});
-        await page.waitForTimeout(10000);
+        await page.waitForTimeout(20000);
         // Elemento presente?
         let paginaCertidao = await page.evaluate(() => {
             const el = document.getElementById('page1');
@@ -83,12 +83,25 @@ exports.trf1 = async (dados) => {
             const quebrarCaptcha = await page.solveRecaptchas();
             console.log(quebrarCaptcha);
             await page.waitForTimeout(5000);
-            //clicar 10x no botão Emitir Certidão - tentativas
-            for (let index = 0; index < 6; index++) {
+            for (let index = 0; index < 8; index++) {
                 if(paginaCertidao) continue;
-                await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > div > form > div > div > button', { delay: 8000 });
+                await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > pgp-trf1-header > header > div > a > img', { delay: 2000 });
+                await page.waitForTimeout(1000);
+                await page.click('body > pgp-root > div > pgp-certidao > pgp-certidao-inicial > div.menus > pgp-menu-principal:nth-child(1) > mat-card', { delay: 2000 });
+                await page.click('#mat-select-0 > div > div.mat-select-arrow-wrapper.ng-tns-c87-1', { delay: 2000 });
+                await page.click('#mat-option-2 > span', { delay: 2000 });
+                await page.click('#mat-chip-list-input-0', { delay: 2000 });
+                await page.keyboard.press('r', { delay: 1000 });
+                await page.keyboard.press('ArrowDown', {delay:1000});
+                await page.keyboard.press('Enter', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                //Clicar no campo CPF
+                await page.click('#mat-input-0', { delay: 2000 });
+                //Digitar o número do documento
+                await page.keyboard.type(CPF, { delay: 200 });                
+                await page.click('body > pgp-root > div > pgp-certidao > pgp-solicitacao-certidao > div > form > div > div > button', { delay: 2000 });
                 console.log(index);                
-                await page.waitForTimeout(7000);
+                await page.waitForTimeout(20000);
                 paginaCertidao = await page.evaluate(() => {
                     const el = document.getElementById('page1');
                     if (el){
@@ -104,7 +117,7 @@ exports.trf1 = async (dados) => {
         if(paginaCertidao == false){
             console.log("TRF 1: Não foi possível atender o pedido ");
             browser.close();
-            return { erro: "Não foi possível atender o pedido" };
+            return { erro: "Não foi possível atender o pedido", result: resultado };
         }
         await page.waitForTimeout(3000);
         //Remover botão imprimir e Gerar arquivo pdf                
@@ -116,11 +129,12 @@ exports.trf1 = async (dados) => {
         let pasta = diretorio.split(`files${process.env.BARRA}`);
         console.log("Arquivo TRF1, PDF gerado com sucesso.");
         browser.close();
-        return { diretorio: pasta[1], cpf: CPF, orgao: 'trf1', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' };
+        resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'trf1', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+        return resultado;
     } catch (error) {
         console.log("TRF 1 " + error);
         browser.close();
-        return { erro: error }; 
+        return { erro: error, result: resultado };
     }
 
 }

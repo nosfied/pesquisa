@@ -14,7 +14,7 @@ puppeteer.use(
     RecaptchaPlugin({
       provider: {
         id: '2captcha',
-        token: 'd8abbbea75f6ffcdba27b47b05923f39' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
+        token: `${process.env.KEY}` // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
       },
       visualFeedback: true, // colorize reCAPTCHAs (violet = detected, green = solved)
       solveInactiveChallenges: true,
@@ -29,6 +29,7 @@ exports.trf2 = async (dados) =>{
     const SITE_URL = "https://certidoes.trf2.jus.br/certidoes/#/principal/solicitar";
     const CAPTCHA_SITE_KEY = "6LfX_x4UAAAAAM9iOUil8y2DwMe1IYLspfznPGij";
     const CPF = dados.cpf;
+    let resultado = [];        
 
     const browser = await puppeteer.launch({
         headless: true,
@@ -79,12 +80,12 @@ exports.trf2 = async (dados) =>{
         let pasta = diretorio.split(`files${process.env.BARRA}`);
         console.log("Arquivo TRF2, PDF gerado com sucesso.");
         browser.close();
-        return { diretorio: pasta[1], cpf: CPF, orgao: 'trf2', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' };
-
+        resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'trf2', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+        return resultado;
     } catch (error) {
         console.log("TRF 2 " + error);
         browser.close();
-        return { erro: error };
+        return { erro: error, result: resultado };
     }
 }           
     

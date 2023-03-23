@@ -40,7 +40,7 @@ async function curl(options){
 
 exports.resolve_captcha_normal = async function (imagem){
     
-    const KEY_2CAPTCHA = 'd8abbbea75f6ffcdba27b47b05923f39';
+    const KEY_2CAPTCHA = `${process.env.KEY}`;
     let url = `http://2captcha.com/in.php`;    
     let body = {
         "method": "base64",
@@ -65,7 +65,7 @@ exports.resolve_captcha_normal = async function (imagem){
         console.log("Verificando se o Captcha está pronto...");
 
         let result = await curl({
-        url: `http://2captcha.com/res.php?key=d8abbbea75f6ffcdba27b47b05923f39&action=get&id=${captcha_id}&json=true`,
+        url: `http://2captcha.com/res.php?key=${process.env.KEY}&action=get&id=${captcha_id}&json=true`,
         method: "GET"
         });
         let resultado = JSON.parse(result);

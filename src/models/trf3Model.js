@@ -14,7 +14,7 @@ puppeteer.use(
     RecaptchaPlugin({
       provider: {
         id: '2captcha',
-        token: 'd8abbbea75f6ffcdba27b47b05923f39' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
+        token: `${process.env.KEY}` // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY
       },
       visualFeedback: true, // colorize reCAPTCHAs (violet = detected, green = solved)
       solveInactiveChallenges: true,
@@ -55,7 +55,8 @@ exports.trf3 = async (dados) =>{
     const CAPTCHA_SITE_KEY = "6LdDCtAZAAAAAOMqmEijWlAhOAvdXLukZCLWmwkD";
     const ACTION = "t";
     const CPF = dados.cpf;
-    const NOME = dados.nome;        
+    const NOME = dados.nome;
+    let resultado = [];        
 
     const browser = await puppeteer.launch({
         headless: false,
@@ -87,6 +88,7 @@ exports.trf3 = async (dados) =>{
         //await page.setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36');    
         await page.goto(SITE_URL);
         await page.waitForTimeout(3000);
+        await page.click('body > div.cc-window.cc-banner.cc-type-info.cc-theme-classic.cc-bottom.cc-color-override--816177166 > div > a', { delay: 2000 });        
         await page.goto(SITE_URL, {waitUntil: 'networkidle2'});
         await page.waitForSelector('#conteudo > section.secao.destaques.secao-destaques.segunda-secao-destaques > div:nth-child(1) > a > div > span');
         await page.click('#conteudo > section.secao.destaques.secao-destaques.segunda-secao-destaques > div:nth-child(1) > a > div > span', {delay:2000});    
@@ -95,7 +97,7 @@ exports.trf3 = async (dados) =>{
         let pag = await browser.pages();
         //console.log(pag);        
         await pag[2].waitForTimeout(3000);    
-        await pag[2].click('body > div > main > div > div:nth-child(3) > div > a',{delay:2000});
+        await pag[2].click('body > div > main > div > div:nth-child(1) > div > a',{delay:2000});
         await pag[2].waitForSelector('#Tipo');    
                     
         //selecionar o órgão -> clique
@@ -156,13 +158,14 @@ exports.trf3 = async (dados) =>{
             let pasta = diretorio.split(`files${process.env.BARRA}`);                    
             console.log("Arquivo TRF3, PDF gerado com sucesso.");
             browser.close();
-            return { diretorio: pasta[1], cpf: CPF, orgao: 'trf3', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' }
+            resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'trf3', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+            return resultado;
         }       
 
     } catch (error) {        
         console.log("TRF 3 " + error);
         browser.close();
-        return { erro: error };
+        return { erro: error, result: resultado };
     }
 }           
     
