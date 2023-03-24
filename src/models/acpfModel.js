@@ -93,7 +93,7 @@ exports.acpf = async (dados) => {
                 }else{
                     await page.click('body > div.wrapper.ng-scope > application > div > certidao > div > div:nth-child(2) > div > div > div.panel-body > form > div > div.form-group.form-group-sm > div > button.btn.btn-primary.btn-sm', { delay: 3000 });
                 }
-                await page.waitForTimeout(10000);               
+                await page.waitForTimeout(15000);               
                 //await page.waitForTimeout(2000000);
                 let nomeDir = NOME.replace(/ /g, "");
                 //Criação de diretório para armazenar arquivos da pesquisa
