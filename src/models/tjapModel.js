@@ -46,7 +46,8 @@ exports.tjap = async (dados) => {
 
     const browser = await puppeteer.launch({
         headless: false,
-        executablePath: paths.googleChrome(), 
+        executablePath: paths.googleChrome(),
+        userDataDir: paths.perfilChrome(),
         defaultViewport: false,
         ignoreHTTPSErrors: true        
     

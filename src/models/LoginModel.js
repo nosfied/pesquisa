@@ -36,12 +36,6 @@ class Login {
 
   }
 
-  // async userExists(){
-
-  //   this.user = await LoginModel.findOne({ email: this.body.email});
-  //   if(this.user) this.errors.push('usuário já existe.');
-  // }
-
   valida(){
     this.cleanUp();
 
