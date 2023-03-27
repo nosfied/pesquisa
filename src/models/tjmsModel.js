@@ -106,6 +106,8 @@ exports.tjms = async (dados) => {
                 console.log(captchaPresente);
                 if(captchaPresente != false){
                     let confirmCaptchaPresente = true;
+                    let quebrarCaptcha = await page.solveRecaptchas();
+                    console.log(quebrarCaptcha);
                     for (let index = 0; index < 6; index++) {
                         if(confirmCaptchaPresente == false) continue;
                         await page.waitForTimeout(7000);
