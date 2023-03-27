@@ -34,7 +34,7 @@ exports.trf2 = async (dados) =>{
     const browser = await puppeteer.launch({
         headless: true,
         executablePath: paths.googleChrome(),
-        //userDataDir: paths.perfilChrome()
+        userDataDir: paths.perfilChrome()
 
     });
     const page = await browser.newPage();
