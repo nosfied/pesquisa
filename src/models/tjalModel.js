@@ -112,9 +112,7 @@ exports.tjal = async (dados) => {
                     await page.keyboard.press('Tab', {delay:1000});
                     await page.keyboard.press('Tab', {delay:1000});
                     await page.keyboard.press('Tab', {delay:1000});
-                    await page.keyboard.press('Tab', {delay:1000});
-                    await page.keyboard.press('Tab', {delay:1000});
-                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Tab', {delay:1000});                    
                     await page.keyboard.press('Space', {delay:3000});
                     await page.keyboard.press('Enter', {delay:3000});
                     await page.waitForTimeout(3000000);
