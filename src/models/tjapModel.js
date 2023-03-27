@@ -73,8 +73,8 @@ exports.tjap = async (dados) => {
                     await page.keyboard.press('ArrowRight', {delay:1000});
                     //await page.keyboard.press('Tab', {delay:1000});
                 }
-                await page.keyboard.press('Tab', {delay:1000});
-                await page.keyboard.type(NASCIMENTO,{delay:300});
+                await page.keyboard.press('Tab', {delay:4000});
+                await page.keyboard.type(NASCIMENTO,{delay:150});
                 await page.keyboard.press('Tab', { delay: 1000 });
                 await page.keyboard.type(NOMEMAE, { delay: 150 });
                 await page.keyboard.press('Tab', { delay: 1000 });
