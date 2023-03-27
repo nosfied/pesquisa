@@ -58,7 +58,8 @@ exports.tjsc = async (dados) => {
             if(tipo == 'criminal1' || tipo == 'civel1'){
                                 
                 await util.limparArquivosAntigos();        
-                await page.goto(SITE_URL, {waitUntil: 'networkidle2'});        
+                await page.goto(SITE_URL, {waitUntil: 'networkidle2'});
+                await page.waitForTimeout(3000);
                 await page.click('#id_sco\\.pedido\\.label\\.cdComarca', { delay: 2000 });
                 await page.keyboard.type(COMARCA,{delay:150});
                 await page.keyboard.press('Enter', {delay:1000});
