@@ -38,7 +38,7 @@ exports.trf1 = async (dados) => {
     const browser = await puppeteer.launch({
         headless: false,
         executablePath: paths.googleChrome(),
-        //userDataDir: paths.perfilChrome()
+        userDataDir: paths.perfilChrome()
     });
     let cookie = await util.pegarCookies(SITIOCOOKIES);
     const cookies = [{name: 'cookie', value: `${cookie}`, domain: 'https://sistemas.trf1.jus.br/certidao/#/solicitacao'}];
