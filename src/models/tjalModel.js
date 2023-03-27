@@ -107,6 +107,10 @@ exports.tjal = async (dados) => {
                     console.log(quebrarCaptcha);
                     await page.waitForTimeout(2000);
                     await page.focus('#confirmacaoInformacoes', {delay:4000});
+
+
+                    await page.waitForTimeout(2000000);
+
                     await page.click('#confirmacaoInformacoes', {delay:4000});
                     await page.click('#pbEnviar', {delay:3000});
                     await page.waitForTimeout(3000);
