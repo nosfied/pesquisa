@@ -108,6 +108,7 @@ exports.tjal = async (dados) => {
                     await page.waitForTimeout(2000);
                     await page.click('#confirmacaoInformacoes', {delay:4000});
                     await page.click('#entity\\.endNomePesq\\.municipio\\.nmMunicipio', {delay:4000});
+                    await page.click('body > table:nth-child(4) > tbody > tr > td > form > div:nth-child(2)', {delay:4000});                    
                     await page.keyboard.press('Tab', {delay:1000});
                     await page.keyboard.press('Tab', {delay:1000});
                     await page.keyboard.press('Tab', {delay:1000});
