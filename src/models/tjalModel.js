@@ -107,12 +107,15 @@ exports.tjal = async (dados) => {
                     console.log(quebrarCaptcha);
                     await page.waitForTimeout(2000);
                     await page.focus('#confirmacaoInformacoes', {delay:4000});
-
-
-                    await page.waitForTimeout(2000000);
-
-                    await page.click('#confirmacaoInformacoes', {delay:4000});
-                    await page.click('#pbEnviar', {delay:3000});
+                    await page.click('#entity\\.endNomePesq\\.municipio\\.nmMunicipio', {delay:4000});
+                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Tab', {delay:1000});
+                    await page.keyboard.press('Space', {delay:3000});
+                    await page.keyboard.press('Enter', {delay:3000});
                     await page.waitForTimeout(3000);
                     let atencao = await page.$('body > div.blockUI.blockMsg.blockPage');
                     if(atencao){
