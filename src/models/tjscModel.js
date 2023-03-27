@@ -37,8 +37,8 @@ exports.tjsc = async (dados) => {
     const SEXO = dados.sexo;
     const NASCIMENTO = dados.nascimento[8]+dados.nascimento[9]+dados.nascimento[5]+dados.nascimento[6]+dados.nascimento[0]+dados.nascimento[1]+dados.nascimento[2]+dados.nascimento[3];        
     const NOMEMAE = dados.nomeMae;        
-    const NOMEPAI = dados.nomePai;        
-    const COMARCA = dados.comarca;        
+    const NOMEPAI = dados.nomePai;
+    const ESTCIVIL = dados.estadoCivil;
     const EMAIL = dados.email;
     const ORGEXP = dados.orgaoExp;
     let resultado = [];
@@ -59,42 +59,54 @@ exports.tjsc = async (dados) => {
                                 
                 await util.limparArquivosAntigos();        
                 await page.goto(SITE_URL, {waitUntil: 'networkidle2'});
-                await page.waitForTimeout(3000);
-                await page.click('#id_sco\\.pedido\\.label\\.cdComarca', { delay: 2000 });
-                await page.keyboard.type(COMARCA,{delay:150});
-                await page.keyboard.press('Enter', {delay:1000});
-                await page.keyboard.press('Tab', {delay:1000});
-                if(tipo == 'criminal1'){
-                    await page.keyboard.press('ArrowDown', {delay:1000});
-                    await page.keyboard.press('ArrowDown', {delay:1000});
-                }else{
-                    await page.keyboard.press('ArrowDown', {delay:1000});
-                }                
-                await page.keyboard.press('Tab', {delay:1000});            
-                await page.keyboard.press('Tab', {delay:1000});
+                await page.waitForTimeout(2000);
+                await page.click('#form_certidao > div > div:nth-child(1) > div > div > div > input[type=checkbox]:nth-child(3)', { delay: 2000 });
+                await page.waitForTimeout(2000);
+                await page.click('#form_certidao > div > div:nth-child(2) > div > div > div > input[type=checkbox]:nth-child(3)', { delay: 2000 });
+                await page.waitForTimeout(2000);
+                await page.click('#form_certidao > div > div:nth-child(3) > div > div > div > input', { delay: 2000 });
                 await page.keyboard.type(NOME,{delay:150});
                 await page.keyboard.press('Tab', {delay:1000});            
+                await page.keyboard.press('ArrowDown', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.type(CPF,{delay:150});
                 await page.keyboard.press('Tab', {delay:1000});            
                 await page.keyboard.type(RG,{delay:150});
-                if(SEXO == 'masculino'){
-                    await page.keyboard.press('Tab', {delay:1000});
-                    await page.keyboard.press('Space', {delay:1000});
-                    await page.keyboard.press('Tab', {delay:1000});
-                }else{
-                    await page.keyboard.press('Tab', {delay:1000});
-                    await page.keyboard.press('ArrowRight', {delay:1000});
-                    await page.keyboard.press('Tab', {delay:1000});
-                }                
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.type(ORGEXP,{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.type(ESTCIVIL,{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.type(NOMEMAE,{delay:150});
-                await page.keyboard.press('Tab', {delay:1000});        
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.type(NOMEPAI,{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.type(NASCIMENTO,{delay:150});
                 await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.type('Distrito Federal',{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.type('BRASÍLIA',{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.type('SPO, QUADRA 3, Lote 5',{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.type(EMAIL,{delay:150});
                 await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.press('Tab', {delay:1000});
+                await page.keyboard.type('CONCURSO',{delay:150});
+                await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.press('Space', {delay:1000});
+                
+                
+                
                 await page.waitForTimeout(2000);
                 let telaCaptcha = await page.evaluate(async ()=>{        
                         
