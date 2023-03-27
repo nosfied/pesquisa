@@ -105,13 +105,13 @@ exports.tjms = async (dados) => {
                 })
                 console.log(captchaPresente);
                 if(captchaPresente != false){
-                    let confirmCaptchaPresente = true;
-                    let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    let confirmCaptchaPresente = true;                    
                     for (let index = 0; index < 6; index++) {
                         if(confirmCaptchaPresente == false) continue;
                         await page.waitForTimeout(7000);
                         await page.keyboard.press('F5', {delay:1000});
+                        let quebrarCaptcha = await page.solveRecaptchas();
+                        console.log(quebrarCaptcha);
                         await page.click('#pbEnviar', { delay: 2000 });
                         await page.waitForTimeout(2000);
                         confirmCaptchaPresente = await page.evaluate(() =>{
