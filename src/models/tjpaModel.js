@@ -53,9 +53,8 @@ exports.tjpa = async (dados) => {
         for (const tipo of TIPOS) {
             if (tipo == 'criminal' || tipo == 'civel') {
                 
-                await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36');
                 await util.limparArquivosAntigos();
-                await page.goto(SITE_URL, { waitUntil: 'networkidle2', setTimeout: 3000000 });
+                await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
                 await page.click('#formCertidao > div:nth-child(2) > input', { delay: 3000 });
                 await page.keyboard.type(NOME, { delay: 150 });
                 await page.keyboard.press('Tab', { delay: 2000 });
