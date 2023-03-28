@@ -78,8 +78,12 @@ exports.tjrr = async (dados) => {
                     await page.waitForTimeout(2000);
                     //await page.click('#cpf', {delay:2000});
                     await page.click('#form > div > div > div > a', {delay:2000});
-                    await page.focus('#form > div > div > div > a', {delay:1000});
-                    await page.click('#form > div > div > div > a', {delay:1000});
+                    await page.focus('#cpf', {delay:1000});
+                    await page.keyboard.press('Tab', { delay: 1000 });
+                    await page.keyboard.press('Tab', { delay: 1000 });
+                    await page.keyboard.press('Tab', { delay: 1000 });
+                    await page.keyboard.press('Tab', { delay: 1000 });
+                    await page.keyboard.press('Enter', { delay: 1000 });
                     await page.waitForTimeout(10000);                            
                 }else{
                     //await page.click('#confirmacaoInformacoes', {delay:2000});
