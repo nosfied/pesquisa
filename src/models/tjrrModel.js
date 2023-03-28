@@ -76,8 +76,9 @@ exports.tjrr = async (dados) => {
                     let quebrarCaptcha = await page.solveRecaptchas();
                     console.log(quebrarCaptcha);
                     await page.waitForTimeout(2000);
-                    await page.click('#cpf', {delay:2000});
+                    //await page.click('#cpf', {delay:2000});
                     await page.click('#form > div > div > div > a', {delay:2000});
+                    await page.click('#form > div > div > div > a', {delay:1000});
                     await page.waitForTimeout(10000);                            
                 }else{
                     //await page.click('#confirmacaoInformacoes', {delay:2000});
