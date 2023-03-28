@@ -38,9 +38,7 @@ exports.tjap = async (dados) => {
     const NOMEPAI = dados.nomePai;
     const UFRG = dados.ufRg;
     const SEXO = dados.sexo;
-    const NASCIMENTO = dados.nascimento[8]+dados.nascimento[9]+dados.nascimento[5]+dados.nascimento[6]+dados.nascimento[0]+dados.nascimento[1]+dados.nascimento[2]+dados.nascimento[3];        
-
-
+    const NASCIMENTO = dados.nascimento[8]+dados.nascimento[9]+dados.nascimento[5]+dados.nascimento[6]+dados.nascimento[0]+dados.nascimento[1]+dados.nascimento[2]+dados.nascimento[3];
 
     let resultado = [];
 
@@ -74,7 +72,12 @@ exports.tjap = async (dados) => {
                     //await page.keyboard.press('Tab', {delay:1000});
                 }
                 await page.keyboard.press('Tab', {delay:4000});
-                await page.keyboard.type(NASCIMENTO,{delay:500});
+                if (process.env.SO == 'linux'){
+                    const NASC = dados.nascimento[5]+dados.nascimento[6]+dados.nascimento[8]+dados.nascimento[9]+dados.nascimento[0]+dados.nascimento[1]+dados.nascimento[2]+dados.nascimento[3];
+                    await page.keyboard.type(NASC,{delay:200});
+                } else {
+                    await page.keyboard.type(NASCIMENTO,{delay:200});
+                }
                 await page.keyboard.press('Tab', { delay: 1000 });
                 await page.keyboard.type(NOMEMAE, { delay: 150 });
                 await page.keyboard.press('Tab', { delay: 1000 });
