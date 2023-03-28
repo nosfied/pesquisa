@@ -71,7 +71,7 @@ exports.tjac = async (dados) => {
         await page.keyboard.type(EMAIL,{delay:150});
         await page.keyboard.press('Tab', {delay:1000});
         await page.keyboard.press('Space', {delay:1000});
-        await page.waitForTimeout(3000000);
+        await page.waitForTimeout(3000);
         let telaCaptcha = await page.evaluate(async ()=>{        
                         
             return document.querySelector("body > div:nth-child(15)").style.visibility;                    
