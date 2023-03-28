@@ -88,10 +88,11 @@ exports.tjma = async (dados) => {
                         diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                             return dir;
                         });
+                        let imagem;
                         if (process.env.SO == 'linux'){
-                            let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 290, y: 280, width: 170, height: 70 }, encoding: 'base64'});
+                            imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 290, y: 280, width: 170, height: 70 }, encoding: 'base64'});
                         } else {
-                            let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 }, encoding: 'base64'});                        
+                            imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 }, encoding: 'base64'});                        
                             //screenshot modo headless
                             //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});
                         }                        
