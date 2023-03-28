@@ -64,7 +64,8 @@ exports.tjmt = async (dados) => {
         await page.waitForTimeout(30000);
        
         let paginas = await browser.pages();
-
+        
+        await paginas[2].waitForTimeout(3000);
         await paginas[2].keyboard.press('Tab', { delay: 1000 });
         await paginas[2].keyboard.press('Enter', { delay: 2000 });
         await paginas[2].keyboard.press('Tab', { delay: 1000 });
