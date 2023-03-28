@@ -77,7 +77,7 @@ exports.tjce = async (dados) => {
                 await page.keyboard.press('ArrowDown', {delay:5000});        
                 await page.waitForSelector('#form-nova-solicitacao\\:avisosDialog > div.ui-dialog-content.ui-widget-content > b > center > button');                
                 await page.click('#form-nova-solicitacao\\:avisosDialog > div.ui-dialog-content.ui-widget-content > b > center > button', { delay: 2000 });
-                await page.waitForSelector('#form-nova-solicitacao\\:avisosDialog > div.ui-dialog-content.ui-widget-content > b > center > button');        
+                await page.waitForTimeout(3000);
                 await page.click('#form-nova-solicitacao\\:insercaoComarca > div.ui-selectonemenu-trigger.ui-state-default.ui-corner-right > span', { delay: 3000 });
                 await page.keyboard.type(COMARCA,{delay:150});
                 await page.keyboard.press('Enter', { delay: 3000 });
