@@ -94,9 +94,14 @@ exports.tjam = async (dados) => {
             console.log("TJAM: Processo interrompido pelo Captcha. Tentando solucionar...");            
             let quebrarCaptcha = await page.solveRecaptchas();
             console.log(quebrarCaptcha);
-        }
-        await page.click('#confirmacaoInformacoes', { delay: 3000 });                           
-        await page.click('#pbEnviar', { delay: 1000 });                           
+            await page.focus('#confirmacaoInformacoes', { delay: 3000 });                           
+            await page.keyboard.press('Space', {delay:1000});           
+            //await page.click('#confirmacaoInformacoes', { delay: 3000 });                           
+            await page.click('#pbEnviar', { delay: 1000 });
+        } else {
+            await page.click('#confirmacaoInformacoes', { delay: 3000 });                           
+            await page.click('#pbEnviar', { delay: 1000 });
+        }                                   
         await page.waitForSelector('body > table:nth-child(4) > tbody > tr > td > form > div:nth-child(2) > table.secaoFormBody > tbody > tr:nth-child(1) > td:nth-child(2) > span');
         let nPedido = await page.$eval('body > table:nth-child(4) > tbody > tr > td > form > div:nth-child(2) > table.secaoFormBody > tbody > tr:nth-child(1) > td:nth-child(2) > span', el => el.textContent);
         let dtPedido = await page.$eval('body > table:nth-child(4) > tbody > tr > td > form > div:nth-child(2) > table.secaoFormBody > tbody > tr:nth-child(2) > td:nth-child(2) > span', el => el.textContent);
