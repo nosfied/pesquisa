@@ -35,8 +35,8 @@ exports.tjma = async (dados) => {
     const NOME = dados.nome;
     const NOMEMAE = dados.nomeMae;        
     const NOMEPAI = dados.nomePai;
-    const TJMAX = process.env.TJMA.CAPTCHA.X;
-    const TJMAY = process.env.TJMA.CAPTCHA.Y;
+    const TJMAX = process.env.TJMACAPTCHAX;
+    const TJMAY = process.env.TJMACAPTCHAY;
 
     let resultado = [];
 
