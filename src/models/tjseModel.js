@@ -83,9 +83,16 @@ exports.tjse = async (dados) => {
                         diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                             return dir;
                         });
-                        let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 765, y: 650, width: 170, height: 70 }, encoding: 'base64' });
-                        //screenshot modo headless
-                        //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});
+                        let imagem;
+                        if (process.env.SO == 'linux'){
+                            imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 765, y: 650, width: 170, height: 70 }});
+                            await page.waitForTimeout(3000000);
+                            
+                        } else {
+                            imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 765, y: 650, width: 170, height: 70 }, encoding: 'base64'});                        
+                            //screenshot modo headless
+                            //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});
+                        }
                         let texto_captcha = await util.resolve_captcha_normal(imagem);
                         await page.keyboard.type(texto_captcha, { delay: 150 });
                         await page.keyboard.press('Enter', { delay: 2000 });
