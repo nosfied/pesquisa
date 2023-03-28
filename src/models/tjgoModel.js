@@ -80,7 +80,7 @@ exports.tjgo = async (dados) => {
                     await page.keyboard.press('Tab', { delay: 1000 });
                     await page.keyboard.press('Enter', { delay: 2000 });
                     await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.waitForTimeout(3000);
+                    await page.waitForTimeout(3000000);
                     diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                         return dir;
                     });
