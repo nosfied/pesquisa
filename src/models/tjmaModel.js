@@ -88,7 +88,7 @@ exports.tjma = async (dados) => {
                         diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                             return dir;
                         });
-                        let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 } });
+                        let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 290, y: 380, width: 170, height: 70 } });
                         await page.waitForTimeout(30000000);
                         
                         //screenshot modo headless
