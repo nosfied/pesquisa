@@ -35,6 +35,8 @@ exports.tjma = async (dados) => {
     const NOME = dados.nome;
     const NOMEMAE = dados.nomeMae;        
     const NOMEPAI = dados.nomePai;
+    const TJMAX = process.env.TJMA.CAPTCHA.X;
+    const TJMAY = process.env.TJMA.CAPTCHA.Y;
 
     let resultado = [];
 
@@ -89,7 +91,7 @@ exports.tjma = async (dados) => {
                             return dir;
                         });
                         if (process.env.SO == 'linux'){
-                            let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: process.env.TJMA.CAPTCHA.X, y: process.env.TJMA.CAPTCHA.Y, width: 170, height: 70 }, encoding: 'base64'});
+                            let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: TJMAX, y: TJMAY, width: 170, height: 70 }, encoding: 'base64'});
                         } else {
                             let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 }, encoding: 'base64'});                        
                             //screenshot modo headless
