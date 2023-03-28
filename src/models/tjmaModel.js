@@ -62,7 +62,7 @@ exports.tjma = async (dados) => {
                     return;
                 })
                 //console.log(nPedido);
-                for (let index = 0; index < 10; index++) {
+                for (let index = 0; index < 5; index++) {
                     //console.log(nPedido);                    
                     if (nPedido) {
                         continue;
@@ -88,7 +88,9 @@ exports.tjma = async (dados) => {
                         diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                             return dir;
                         });
-                        let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 }, encoding: 'base64' });
+                        let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 } });
+                        await page.waitForTimeout(30000000);
+                        
                         //screenshot modo headless
                         //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});
                         let texto_captcha = await util.resolve_captcha_normal(imagem);
