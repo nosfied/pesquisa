@@ -85,7 +85,7 @@ exports.tjse = async (dados) => {
                         });
                         let imagem;
                         if (process.env.SO == 'linux'){
-                            imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 765, y: 650, width: 170, height: 70 }});
+                            imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 665, y: 650, width: 170, height: 70 }});
                             await page.waitForTimeout(3000000);
                             
                         } else {
