@@ -74,7 +74,7 @@ exports.tjac = async (dados) => {
         await page.waitForTimeout(3000000);
         let telaCaptcha = await page.evaluate(async ()=>{        
                         
-            return document.querySelector("body > div:nth-child(16)").style.visibility;                    
+            return document.querySelector("body > div:nth-child(15)").style.visibility;                    
         })
         console.log(telaCaptcha);
         if(telaCaptcha == 'visible') {        
