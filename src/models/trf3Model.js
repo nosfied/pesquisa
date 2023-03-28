@@ -85,7 +85,7 @@ exports.trf3 = async (dados) =>{
                 
         // });
         //Alterar User-Agent para como se fosse um navegador com headless:false a fim de evitar Access Denied
-        //await page.setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36');    
+        //await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36');    
         await page.goto(SITE_URL);
         await page.waitForTimeout(3000);
         await page.click('body > div.cc-window.cc-banner.cc-type-info.cc-theme-classic.cc-bottom.cc-color-override--816177166 > div > a', { delay: 2000 });        
