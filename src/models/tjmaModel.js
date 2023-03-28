@@ -88,11 +88,13 @@ exports.tjma = async (dados) => {
                         diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                             return dir;
                         });
-                        let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 290, y: 280, width: 170, height: 70 } });
-                        await page.waitForTimeout(30000000);
-                        
-                        //screenshot modo headless
-                        //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});
+                        if (process.env.SO == 'linux'){
+                            let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: process.env.TJMA.CAPTCHA.X, y: process.env.TJMA.CAPTCHA.Y, width: 170, height: 70 }, encoding: 'base64'});
+                        } else {
+                            let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip: { x: 300, y: 420, width: 170, height: 70 }, encoding: 'base64'});                        
+                            //screenshot modo headless
+                            //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});
+                        }                        
                         let texto_captcha = await util.resolve_captcha_normal(imagem);
                         await page.keyboard.type(texto_captcha, { delay: 150 });
                         await page.click('body > ion-app > ng-component > ion-split-pane > ion-nav > page-certidao-generate-state-certificate-form > ion-content > div.scroll-content > form > ion-list > div > button', { delay: 2000 });
@@ -124,7 +126,6 @@ exports.tjma = async (dados) => {
 
             }
             console.log(nPedido);
-            //await page.waitForTimeout(15000000);
             await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjma.pdf` });
             let pasta = diretorio.split(`files${process.env.BARRA}`);
             console.log("Arquivo TJMA, PDF gerado com sucesso.");
