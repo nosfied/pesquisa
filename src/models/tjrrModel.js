@@ -75,13 +75,13 @@ exports.tjrr = async (dados) => {
                     console.log("TJRR: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
                     console.log(quebrarCaptcha);
-                    await page.waitForTimeout(2000000);
-                    //await page.click('#confirmacaoInformacoes', {delay:2000});
-                    await page.click('#form > div > div > div > a', {delay:1000});
+                    await page.waitForTimeout(2000);
+                    await page.click('#cpf', {delay:2000});
+                    await page.click('#form > div > div > div > a', {delay:2000});
                     await page.waitForTimeout(10000);                            
                 }else{
                     //await page.click('#confirmacaoInformacoes', {delay:2000});
-                    await page.click('#form > div > div > div > a', {delay:1000});
+                    await page.click('#form > div > div > div > a', {delay:2000});
                     await page.waitForTimeout(10000);
                 }
                 let certidao = await page.evaluate(() =>{
