@@ -109,9 +109,11 @@ exports.tjse = async (dados) => {
             }
             console.log(nPedido);
             await page.waitForTimeout(3000);
-            await page.screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tjse.png`, clip: { x: 325, y: 350, width: 700, height: 800 } });
-
-            //await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjse.pdf` });
+            if (process.env.SO == 'linux'){
+                await page.screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tjse.png`, clip: { x: 225, y: 350, width: 700, height: 800 } });                            
+            } else {
+                await page.screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tjse.png`, clip: { x: 325, y: 350, width: 700, height: 800 } });
+            }
             let pasta = diretorio.split(`files${process.env.BARRA}`);
             console.log("Arquivo TJSE, PDF gerado com sucesso.");
             resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjse', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
