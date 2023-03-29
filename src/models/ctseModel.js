@@ -151,8 +151,8 @@ exports.ctse = async (dados) => {
                     'iframe[src="https://filia-consulta.tse.jus.br/"]',
                 );
                 const frame = await elementHandle.contentFrame();
-                await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
                 await frame.waitForTimeout(3000);
+                await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
                 await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
                 await frame.click('#mat-input-0', { delay: 2000 });
                 await page.keyboard.type(nTitulo, { delay: 150 });
