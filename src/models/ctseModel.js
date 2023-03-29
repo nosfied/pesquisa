@@ -144,14 +144,14 @@ exports.ctse = async (dados) => {
                     console.log("Arquivo TSE Filiação Partidária - Simples, Número do Título Obtido: " + nTitulo);
                 }
                 await page.goto('https://www.tse.jus.br/servicos-eleitorais/certidoes/certidao-de-filiacao-partidaria');                
-                await page.waitForTimeout(2000);                
+                await page.waitForTimeout(3000);                
                 await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });                
-                await page.waitForTimeout(2000);
+                await page.waitForTimeout(4000);
                 const elementHandle = await page.$(
                     'iframe[src="https://filia-consulta.tse.jus.br/"]',
                 );
                 const frame = await elementHandle.contentFrame();
-                await frame.waitForTimeout(3000000);
+                await frame.waitForTimeout(3000);
                 await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
                 await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
                 await frame.click('#mat-input-0', { delay: 2000 });
