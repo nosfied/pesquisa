@@ -87,23 +87,12 @@ exports.ctse = async (dados) => {
                 const frame = await elementHandle.contentFrame();
                 let titulo = await frame.$eval('#viewer > div > div.textLayer > span:nth-child(195)', el => el.textContent);
                 nTitulo = titulo.replace(/\s/g, '');
-                console.log(nTitulo);
-                await page.focus('#message-quitacao-eleitoral > p > a', { delay: 2000 });                
-                await page.keyboard.press('Tab', { delay: 1000 });                
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Enter', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Enter', { delay: 1000 });
+                console.log(nTitulo);                
+                await frame.click('#secondaryToolbarToggle', { delay: 2000 });                
+                await page.keyboard.press('Tab', { delay: 3000 });                
+                await page.keyboard.press('Tab', { delay: 3000 });
+                await page.keyboard.press('Tab', { delay: 3000 });
+                await page.keyboard.press('Enter', { delay: 1000 });                
                 await page.waitForTimeout(5000);                
                 //Criação de diretório para armazenar arquivos da pesquisa
                 diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
