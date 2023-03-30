@@ -57,7 +57,7 @@ exports.acpf = async (dados) => {
 
                 await util.limparArquivosAntigos();
                 await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
-                await page.waitForSelector('#inputNome_input', { delay: 3000 });                           
+                await page.waitForSelector('#inputNome_input', { delay: 3000 });
                 await page.click('#inputNome_input', { delay: 3000 });
                 await page.keyboard.type(NOME, { delay: 150 });
                 await page.keyboard.press('Tab', { delay: 2000 });
@@ -90,8 +90,14 @@ exports.acpf = async (dados) => {
                     let quebrarCaptcha = await page.solveRecaptchas();
                     console.log(quebrarCaptcha);
                     await page.waitForTimeout(6000);
-                    await page.focus('body > div.wrapper.ng-scope > application > div > certidao > div > div:nth-child(2) > div > div > div.panel-body > form > div > div.form-group.form-group-sm > div > button.btn.btn-primary.btn-sm', { delay: 3000 });
-                    await page.click('body > div.wrapper.ng-scope > application > div > certidao > div > div:nth-child(2) > div > div > div.panel-body > form > div > div.form-group.form-group-sm > div > button.btn.btn-primary.btn-sm', { delay: 3000 });
+                    await page.focus('#inputCpf_input', { delay: 3000 });
+                    await page.keyboard.press('Tab', {delay:2000});
+                    await page.keyboard.press('Tab', {delay:2000});
+                    await page.keyboard.press('Tab', {delay:2000});
+                    await page.keyboard.press('Tab', {delay:2000});
+                    await page.keyboard.press('Tab', {delay:2000});
+                    await page.keyboard.press('Tab', {delay:2000});
+                    await page.keyboard.press('Enter', {delay:2000});
                 }else{
                     await page.click('body > div.wrapper.ng-scope > application > div > certidao > div > div:nth-child(2) > div > div > div.panel-body > form > div > div.form-group.form-group-sm > div > button.btn.btn-primary.btn-sm', { delay: 3000 });
                 }
