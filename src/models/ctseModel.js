@@ -158,12 +158,6 @@ exports.ctse = async (dados) => {
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
                 }
-                // if (process.env.SO == 'linux'){
-                //     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
-                // } else {
-                //     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
-                //     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
-                // }
                 await frame.click('#mat-input-0', { delay: 2000 });
                 await page.keyboard.type(nTitulo, { delay: 150 });
                 await page.keyboard.press('Tab', { delay: 2000 });
@@ -314,11 +308,7 @@ exports.ctse = async (dados) => {
                 }
                 await page.waitForTimeout(7000);
                 let pag = await browser.pages();
-                await pag[2].keyboard.press('Tab', { delay: 1000 });
-                if(statusTela == 0){
-                    await pag[2].keyboard.press('Enter', { delay: 2000 });
-                    statusTela = 1;
-                }
+                await pag[2].keyboard.press('Tab', { delay: 1000 });                
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
                 await pag[2].keyboard.press('Enter', { delay: 2000 });
