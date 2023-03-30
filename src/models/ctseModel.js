@@ -41,7 +41,6 @@ exports.ctse = async (dados) => {
 
 
     let resultado = [];
-    let statusTela = 0;
     let nTitulo = '';
 
     const browser = await puppeteer.launch({
@@ -89,31 +88,38 @@ exports.ctse = async (dados) => {
                 let titulo = await frame.$eval('#viewer > div > div.textLayer > span:nth-child(195)', el => el.textContent);
                 nTitulo = titulo.replace(/\s/g, '');
                 console.log(nTitulo);
-                await page.click('#message-quitacao-eleitoral > p > a', { delay: 2000 });                
+                await page.focus('#message-quitacao-eleitoral > p > a', { delay: 2000 });                
+                await page.keyboard.press('Tab', { delay: 1000 });                
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Enter', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Tab', { delay: 1000 });
+                await page.keyboard.press('Enter', { delay: 1000 });
                 await page.waitForTimeout(5000);                
-                await page.keyboard.press('Tab', { delay: 1000 });
-                if(statusTela == 0){
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    statusTela = 1;
-                }
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Tab', { delay: 1000 });
-                await page.keyboard.press('Enter', { delay: 2000 });
-                await page.keyboard.press('Enter', { delay: 2000 });
-                await page.waitForTimeout(1000);                
                 //Criação de diretório para armazenar arquivos da pesquisa
                 diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
                 });
-                await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseSituacao.pdf` });
+                await copyFile(`${paths.dirDownloadPadrao()}${process.env.BARRA}document.pdf`, `${diretorio}${process.env.BARRA}${CPF}tseSituacao.pdf`);
                 let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TSE Situação Eleitoral, PDF gerado com sucesso.");
+                await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}document.pdf`);
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tseSituacao', documento: 'TSE Certidão - Situação Eleitoral' });                               
 
             } else if (tipo == 'FiliacaoSimples') {
                 await util.limparArquivosAntigos();
                 if (nTitulo == '') {
                     await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
+                    await page.waitForTimeout(3000);
                     await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
                     await page.click('#destaqueServico > li:nth-child(2) > a', { delay: 2000 });
                     await page.waitForTimeout(3000);
@@ -145,7 +151,7 @@ exports.ctse = async (dados) => {
                     console.log("Arquivo TSE Filiação Partidária - Simples, Número do Título Obtido: " + nTitulo);
                 }
                 await page.goto('https://www.tse.jus.br/servicos-eleitorais/certidoes/certidao-de-filiacao-partidaria');                
-                await page.waitForTimeout(2000);                
+                await page.waitForTimeout(3000);                
                 await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });                
                 await page.waitForTimeout(2000);
                 const elementHandle = await page.$(
@@ -201,13 +207,9 @@ exports.ctse = async (dados) => {
                 }
                 await page.waitForTimeout(7000);
                 let pag = await browser.pages();
+                await pag[2].keyboard.press('Tab', { delay: 1000 });                
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
-                if(statusTela == 0){
-                    await pag[2].keyboard.press('Enter', { delay: 2000 });
-                    statusTela = 1;
-                }
-                await pag[2].keyboard.press('Tab', { delay: 1000 });
-                await pag[2].keyboard.press('Tab', { delay: 1000 });
+                await pag[2].keyboard.press('Tab', { delay: 1000 });                
                 await pag[2].keyboard.press('Enter', { delay: 2000 });
                 await pag[2].keyboard.press('Enter', { delay: 2000 });
                 //Criação de diretório para armazenar arquivos da pesquisa
