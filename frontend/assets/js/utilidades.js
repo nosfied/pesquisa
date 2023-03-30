@@ -68,13 +68,12 @@ for (const box of boxs) {
 }
 
 function carregaResult(result, linha, sitio, sitio2) {
-    
-    const linhaResultado = document.getElementById(linha);    
+    const linhaResultado = document.getElementById(linha);
     let org = linha.split('x')     
     if(!result.erroValid){
         if(!result.erro){
             linhaResultado.innerHTML = '';
-            for (const res of result) {                
+            for (const res of result) {
                 if(res.cpf.length > 15){
                     linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
                     <td><a href="${res.cpf}" target="_blank">Download</a></td></tr>`
@@ -84,9 +83,9 @@ function carregaResult(result, linha, sitio, sitio2) {
                 }                    
             }
             
-        }else if(result.erro && result.result != ''){            
+        }else if(result.erro && result.result != ''){
             linhaResultado.innerHTML = '';
-            for (const res of result.result) {                
+            for (const res of result.result) {
                 if(res.cpf.length > 15){
                     linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
                     <td><a href="${res.cpf}" target="_blank">Download</a></td></tr>`
