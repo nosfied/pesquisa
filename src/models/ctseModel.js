@@ -106,7 +106,7 @@ exports.ctse = async (dados) => {
 
             } else if (tipo == 'FiliacaoSimples') {
                 await util.limparArquivosAntigos();
-                if (nTitulo == '') {
+                if (nTitulo == '' || typeof(nTitulo) == 'string') {
                     await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
                     await page.waitForTimeout(3000);
                     await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
