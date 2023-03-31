@@ -138,6 +138,7 @@ exports.ctse = async (dados) => {
                         'iframe[title="Certidão de Quitação Eleitoral"]',
                     );
                     const frame = await elementHandle.contentFrame();
+                    await page.waitForTimeout(3000);
                     let titulo = await frame.$eval('#viewer > div > div.textLayer > span:nth-child(195)', el => el.textContent);
                     nTitulo = titulo.replace(/\s/g, '');
                     console.log("Arquivo TSE Filiação Partidária - Simples, Número do Título Obtido: " + nTitulo);
@@ -250,6 +251,7 @@ exports.ctse = async (dados) => {
                         'iframe[title="Certidão de Quitação Eleitoral"]',
                     );
                     const frame = await elementHandle.contentFrame();
+                    await page.waitForTimeout(3000);
                     let titulo = await frame.$eval('#viewer > div > div.textLayer > span:nth-child(195)', el => el.textContent);
                     nTitulo = titulo.replace(/\s/g, '');
                     console.log("Arquivo TSE Filiação Partidária - Histórico, Número do Título Obtido: " + nTitulo);
