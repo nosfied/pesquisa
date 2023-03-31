@@ -46,7 +46,7 @@ exports.ctse = async (dados) => {
     const browser = await puppeteer.launch({
         headless: false,
         executablePath: paths.googleChrome(),
-        userDataDir: paths.perfilChrome(),
+        //userDataDir: paths.perfilChrome(),
         defaultViewport: false,
         ignoreHTTPSErrors: true        
     
@@ -218,8 +218,9 @@ exports.ctse = async (dados) => {
             
             } else if (tipo == 'FiliacaoHistorico') {
                 await util.limparArquivosAntigos();
-                if (nTitulo == '') {
+                if (nTitulo == '' || nTitulo.length < 11) {
                     await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
+                    await page.waitForTimeout(3000);
                     await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
                     await page.click('#destaqueServico > li:nth-child(2) > a', { delay: 2000 });
                     await page.waitForTimeout(3000);
