@@ -60,6 +60,7 @@ exports.ctse = async (dados) => {
                 await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
                 await page.waitForTimeout(3000);
                 await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
+                await page.waitForTimeout(3000);
                 await page.click('#destaqueServico > li:nth-child(2) > a', { delay: 2000 });
                 await page.waitForTimeout(3000);
                 await page.click('#QE_NomeEleitor', { delay: 2000 });
@@ -111,6 +112,7 @@ exports.ctse = async (dados) => {
                     await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
                     await page.waitForTimeout(3000);
                     await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
+                    await page.waitForTimeout(3000);
                     await page.click('#destaqueServico > li:nth-child(2) > a', { delay: 2000 });
                     await page.waitForTimeout(3000);
                     await page.click('#QE_NomeEleitor', { delay: 2000 });
@@ -222,6 +224,7 @@ exports.ctse = async (dados) => {
                     await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
                     await page.waitForTimeout(3000);
                     await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
+                    await page.waitForTimeout(3000);
                     await page.click('#destaqueServico > li:nth-child(2) > a', { delay: 2000 });
                     await page.waitForTimeout(3000);
                     await page.click('#QE_NomeEleitor', { delay: 2000 });
