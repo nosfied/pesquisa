@@ -259,7 +259,7 @@ exports.ctse = async (dados) => {
                 await page.goto('https://www.tse.jus.br/servicos-eleitorais/certidoes/certidao-de-filiacao-partidaria');                
                 await page.waitForTimeout(2000);                
                 await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });                
-                await page.waitForTimeout(2000);
+                await page.waitForTimeout(4000);
                 const elementHandle = await page.$(
                     'iframe[src="https://filia-consulta.tse.jus.br/"]',
                 );
