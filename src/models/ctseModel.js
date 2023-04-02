@@ -264,7 +264,8 @@ exports.ctse = async (dados) => {
                     'iframe[src="https://filia-consulta.tse.jus.br/"]',
                 );
                 const frame = await elementHandle.contentFrame();
-                if (process.env.SO == 'linux'){
+                let botao = await frame.$eval('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span');
+                if (botao){
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
                 } else {
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
