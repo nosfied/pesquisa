@@ -335,9 +335,9 @@ exports.ctse = async (dados) => {
                     return dir;
                 });
                 if (process.env.SO == 'linux'){
-                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoSimples.png`, clip: { x: 50, y: 40, width: 585, height: 580 } });
+                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 150, y: 40, width: 585, height: 580 } });
                 } else {
-                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoSimples.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
+                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
                 }                let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TSE Filiação Partidária - Histórico, PDF gerado com sucesso.");
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tseFiliacaoHistorico', documento: 'TSE Certidão - Filiação Partidária(Histórico)' });
