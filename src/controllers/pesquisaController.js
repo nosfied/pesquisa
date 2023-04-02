@@ -1307,13 +1307,10 @@ exports.download = (req, res) => {
     let cpf = req.params.cpf;
     let orgao = req.params.orgao;    
     let diretorio = req.params.diretorio;    
-    if (orgao != 'tjse') {
-        
-        res.download(path.resolve(__dirname, '../','../', 'files')+'/'+diretorio+'/'+cpf+orgao+'.pdf');
-
-    } else {
+    if (orgao == 'tjse' || orgao == 'tseFiliacaoHistorico' || orgao == 'tseFiliacaoSimples') {
         res.download(path.resolve(__dirname, '../','../', 'files')+'/'+diretorio+'/'+cpf+orgao+'.png');
-
+    } else {
+        res.download(path.resolve(__dirname, '../','../', 'files')+'/'+diretorio+'/'+cpf+orgao+'.pdf');
     }
 }
 

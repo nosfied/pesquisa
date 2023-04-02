@@ -157,6 +157,7 @@ exports.ctse = async (dados) => {
                     return document.querySelector("body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span");                    
                 })
                 if (botao) {
+                    console.log(botao);                    
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
                 } else {
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
@@ -214,7 +215,7 @@ exports.ctse = async (dados) => {
                 diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
                 });
-                await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoSimples.pdf` });
+                await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoSimples.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
                 let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TSE Filiação Partidária - Simples, PDF gerado com sucesso.");
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tseFiliacaoSimples', documento: 'TSE Certidão - Filiação Partidária(Simples)' });
@@ -329,7 +330,7 @@ exports.ctse = async (dados) => {
                 diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
                 });
-                await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.pdf` });
+                await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });                
                 let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TSE Filiação Partidária - Histórico, PDF gerado com sucesso.");
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tseFiliacaoHistorico', documento: 'TSE Certidão - Filiação Partidária(Histórico)' });
