@@ -269,8 +269,8 @@ exports.ctse = async (dados) => {
                         
                     return document.querySelector("body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span");                    
                 })
-                console.log(botao);
                 if (botao){
+                    console.log(botao);
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-sub-menu-certidao > div > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a:nth-child(1) > span', { delay: 2000 });
                 } else {
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-menu > div > mat-grid-list > div > mat-card > mat-card-header > div > mat-card-title > mat-nav-list > a > span', { delay: 2000 });
