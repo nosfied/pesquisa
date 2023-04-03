@@ -165,6 +165,7 @@ exports.ctcu = async (dados) => {
                     await page.keyboard.press('Tab', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
+                    await page.keyboard.press('Enter', { delay: 2000 });
                 }else{
                     await page.click('#formEmitirCertidaoNadaConsta\\:btnEmitirCertidao', { delay: 2000 });
                 }
