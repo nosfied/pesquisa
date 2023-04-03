@@ -159,8 +159,11 @@ exports.ctcu = async (dados) => {
                     let quebrarCaptcha = await page.solveRecaptchas();
                     console.log(quebrarCaptcha);
                     await page.focus('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
-                    await page.waitForTimeout(9000000);               
-                    
+                    await page.click('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
+                    await page.keyboard.press('Tab', { delay: 2000 });
+                    await page.keyboard.press('Tab', { delay: 2000 });
+                    await page.keyboard.press('Tab', { delay: 2000 });
+                    await page.keyboard.press('Tab', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
                 }else{
                     await page.click('#formEmitirCertidaoNadaConsta\\:btnEmitirCertidao', { delay: 2000 });
