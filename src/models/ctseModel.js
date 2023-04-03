@@ -2,7 +2,6 @@ const puppeteer = require('puppeteer-extra');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 const paths = require('../paths/paths');
 const util = require('../util/util');
-import fullPageScreenshot from 'puppeteer-full-page-screenshot';
 
 //Plugin para deixar o puppeteer 90% indetectável
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -331,6 +330,12 @@ exports.ctse = async (dados) => {
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
                 await pag[2].keyboard.press('Enter', { delay: 2000 });
                 await pag[2].keyboard.press('Enter', { delay: 2000 });
+                await pag[2].keyboard.press('Enter', { delay: 2000 });
+                await pag[2].keyboard.press('Enter', { delay: 2000 });
+                await pag[2].keyboard.press('Tab', { delay: 1000 });
+                await pag[2].keyboard.press('Tab', { delay: 1000 });
+                await pag[2].keyboard.press('Enter', { delay: 2000 });
+                await pag[2].keyboard.press('Enter', { delay: 2000 });
                 //Criação de diretório para armazenar arquivos da pesquisa
                 diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
@@ -338,7 +343,7 @@ exports.ctse = async (dados) => {
                 if (process.env.SO == 'linux'){
                     await pag[2].waitForTimeout(7000);
                     console.log('passou aqui');
-                    await fullPageScreenshot(pag[2], { path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png` });
+                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, fullPage: true });
                 } else {
                     await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
                 }                let pasta = diretorio.split(`files${process.env.BARRA}`);
