@@ -335,7 +335,8 @@ exports.ctse = async (dados) => {
                     return dir;
                 });
                 if (process.env.SO == 'linux'){
-                    await page.waitForTimeout(7000);
+                    await pag[2].waitForTimeout(7000);
+                    console.log('passou aqui');
                     await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, fullPage: true });
                 } else {
                     await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
