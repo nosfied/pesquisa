@@ -158,6 +158,7 @@ exports.ctcu = async (dados) => {
                     console.log("TCU Processos: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
                     console.log(quebrarCaptcha);
+                    await page.waitForTimeout(3000);
                     await page.focus('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
                     await page.click('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
