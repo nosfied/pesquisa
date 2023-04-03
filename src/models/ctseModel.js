@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer-extra');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 const paths = require('../paths/paths');
 const util = require('../util/util');
+const fullPageScreenshot  = require('puppeteer-full-page-screenshot');
 
 //Plugin para deixar o puppeteer 90% indetectável
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -337,7 +338,7 @@ exports.ctse = async (dados) => {
                 if (process.env.SO == 'linux'){
                     await pag[2].waitForTimeout(7000);
                     console.log('passou aqui');
-                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, fullPage: true });
+                    await fullPageScreenshot(pag[2], { path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png` });
                 } else {
                     await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
                 }                let pasta = diretorio.split(`files${process.env.BARRA}`);
