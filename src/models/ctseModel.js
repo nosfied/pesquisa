@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer-extra');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 const paths = require('../paths/paths');
 const util = require('../util/util');
-const fullPageScreenshot  = require('puppeteer-full-page-screenshot');
+import fullPageScreenshot from 'puppeteer-full-page-screenshot';
 
 //Plugin para deixar o puppeteer 90% indetectável
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -14,7 +14,6 @@ const { readdir } = require('node:fs/promises');
 const { BrowserContext, Frame } = require('puppeteer');
 
 puppeteer.use(StealthPlugin());
-puppeteer.use(fullPageScreenshot());
 
 puppeteer.use(
     RecaptchaPlugin({
