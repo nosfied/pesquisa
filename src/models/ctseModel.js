@@ -342,9 +342,10 @@ exports.ctse = async (dados) => {
                     return dir;
                 });
                 if (process.env.SO == 'linux'){
-                    await pag[2].waitForTimeout(7000);
+                    await pag[2].waitForTimeout(3000);
                     console.log('passou aqui');
-                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 195, y: 30, width: 380, height: 470 } });
+                    //await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 195, y: 30, width: 380, height: 470 } });
+                    await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.pdf` });
                 } else {
                     await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
                 }                let pasta = diretorio.split(`files${process.env.BARRA}`);
