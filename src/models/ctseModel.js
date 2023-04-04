@@ -39,7 +39,6 @@ exports.ctse = async (dados) => {
     const NOMEMAE = dados.nomeMae;        
     const NOMEPAI = dados.nomePai;
 
-
     let resultado = [];
     let nTitulo = '';
 
@@ -51,11 +50,12 @@ exports.ctse = async (dados) => {
         ignoreHTTPSErrors: true,
         args: [ `--proxy-server=zproxy.lum-superproxy.io:22225` ]        
     
-    });
+    });    
+
     const page = await browser.newPage();
     await page.authenticate({
-        username: 'brd-customer-hl_31c0867f-zone-data_center',
-        password: '4qde7j406o1d'
+        username: process.env.USER,
+        password: process.env.PASS
     });
     try {                         
         for (const tipo of TIPOS) {
