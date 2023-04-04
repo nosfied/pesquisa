@@ -344,7 +344,7 @@ exports.ctse = async (dados) => {
                 if (process.env.SO == 'linux'){
                     await pag[2].waitForTimeout(7000);
                     console.log('passou aqui');
-                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 175, y: 30, width: 400, height: 480 } });
+                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 195, y: 30, width: 380, height: 470 } });
                 } else {
                     await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
                 }                let pasta = diretorio.split(`files${process.env.BARRA}`);
