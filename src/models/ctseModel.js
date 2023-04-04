@@ -49,20 +49,20 @@ exports.ctse = async (dados) => {
         //userDataDir: paths.perfilChrome(),
         defaultViewport: false,
         ignoreHTTPSErrors: true,
-        args: [ `--proxy-server=zproxy.lum-superproxy.io:9222` ]        
+        args: [ `--proxy-server=zproxy.lum-superproxy.io:22225` ]        
     
     });
     const page = await browser.newPage();
     await page.authenticate({
-        username: process.env.USERNAME,
-        password: process.env.PASS
+        username: 'brd-customer-hl_31c0867f-zone-data_center',
+        password: '4qde7j406o1d'
     });
     try {                         
         for (const tipo of TIPOS) {
             if (tipo == 'situacao') {
 
                 await util.limparArquivosAntigos();
-                await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
+                await page.goto(SITE_URL, { waitUntil: 'networkidle2', setTimeout: 60000 });
                 await page.waitForTimeout(3000);
                 await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
                 await page.waitForTimeout(3000);
@@ -233,7 +233,7 @@ exports.ctse = async (dados) => {
             } else if (tipo == 'FiliacaoHistorico') {
                 await util.limparArquivosAntigos();
                 if (nTitulo == '' || nTitulo.length < 11) {
-                    await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
+                    await page.goto(SITE_URL, { waitUntil: 'networkidle2', setTimeout: 60000 });
                     await page.waitForTimeout(3000);
                     await page.click('#modal-lgpd > div > div > div.botao > button', { delay: 2000 });
                     await page.waitForTimeout(3000);
