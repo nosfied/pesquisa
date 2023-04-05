@@ -66,7 +66,8 @@ exports.tjgo = async (dados) => {
                 await page.keyboard.type(NOMEMAE,{delay:150});
                 await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.type(NASCIMENTO,{delay:150});
-                await page.click('#divBotoesCentralizados > input[type=submit]:nth-child(1)', { delay: 2000 });                
+                await page.click('#divBotoesCentralizados > input[type=submit]:nth-child(1)', { delay: 2000 });
+                await page.waitForTimeout(4000);
                 let certidao = await page.evaluate(() =>{
                     let cert = document.querySelector("body").innerHTML;
                     return cert.length;
@@ -75,8 +76,8 @@ exports.tjgo = async (dados) => {
                 if(certidao < 300){
                     await page.waitForTimeout(3000);
                     await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
                     await page.keyboard.press('Enter', { delay: 2000 });
+                    await page.keyboard.press('Tab', { delay: 1000 });
                     await page.keyboard.press('Tab', { delay: 1000 });
                     await page.keyboard.press('Tab', { delay: 1000 });
                     await page.keyboard.press('Enter', { delay: 2000 });

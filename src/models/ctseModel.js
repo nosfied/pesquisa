@@ -221,7 +221,7 @@ exports.ctse = async (dados) => {
                     return dir;
                 });
                 await pag[2].waitForTimeout(5000);
-                await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.pdf`, landscape: true });
+                await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoSimples.pdf`, landscape: true });
                 let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TSE Filiação Partidária - Simples, PDF gerado com sucesso.");
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tseFiliacaoSimples', documento: 'TSE Certidão - Filiação Partidária(Simples)' });

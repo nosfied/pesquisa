@@ -105,23 +105,16 @@ exports.tjpi = async (dados) => {
                 await page.keyboard.press('Tab', { delay: 1000 });
                 await page.keyboard.press('Enter', { delay: 1000 });                
                 await page.waitForTimeout(15000);
-                let certidao = await page.evaluate(() =>{
-                    let cert = document.querySelector("body").innerHTML;
-                    return cert.length;
+                let brasaoCertidao = await page.evaluate(() =>{
+                    let brasao = document.querySelector("#img-brasao")
+                    return brasao.src;
                 })
-                console.log(certidao);
-                if(certidao < 300){
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.waitForTimeout(3000);
+                console.log(brasaoCertidao);
+                if(brasaoCertidao){                    
                     diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                         return dir;
                     });
-                    await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjpi.pdf`, height: 1800 });
+                    await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjpi.pdf` });
                     let pasta = diretorio.split(`files${process.env.BARRA}`);
                     console.log("Arquivo TJPI, PDF gerado com sucesso.");
                     browser.close();
