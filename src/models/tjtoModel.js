@@ -65,7 +65,7 @@ exports.tjto = async (dados) => {
                 let printPDF = `https://eproc1.tjto.jus.br/eprocV2_prod_1grau/externo_controlador.php?acao=visualizar_pdf_certidao_judicial&idCertidao=${nCertidao[0]}`;
                 console.log("Arquivo TJTO, PDF gerado com sucesso.");
                 browser.close();
-                resultado.push({cpf: printPDF, orgao: 'tjto', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS'});
+                resultado.push({cpf: printPDF, orgao: 'tjto', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS'});
                 return resultado;                                              
 
             }                        

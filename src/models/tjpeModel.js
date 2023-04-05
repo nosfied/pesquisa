@@ -112,8 +112,7 @@ exports.tjpe = async (dados) => {
                 await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjpe.pdf` });
                 let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TJPE, PDF gerado com sucesso.");
-                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjpe', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
-                //await page.waitForTimeout(15000000);                               
+                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjpe', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1°GRAU' });
 
             }                        
 

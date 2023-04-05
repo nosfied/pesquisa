@@ -85,7 +85,7 @@ exports.tjes = async (dados) => {
                     let pasta = diretorio.split(`files${process.env.BARRA}`);
                     console.log("Arquivo TJES, PDF gerado com sucesso.");
                     browser.close();
-                    resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjES', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+                    resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjES', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS' });
                     return resultado;
                 }                              
 

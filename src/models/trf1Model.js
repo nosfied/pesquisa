@@ -129,7 +129,7 @@ exports.trf1 = async (dados) => {
         let pasta = diretorio.split(`files${process.env.BARRA}`);
         console.log("Arquivo TRF1, PDF gerado com sucesso.");
         browser.close();
-        resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'trf1', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+        resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'trf1', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });
         return resultado;
     } catch (error) {
         console.log("TRF 1 " + error);

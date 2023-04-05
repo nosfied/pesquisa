@@ -130,7 +130,7 @@ exports.tjma = async (dados) => {
             await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjma.pdf` });
             let pasta = diretorio.split(`files${process.env.BARRA}`);
             console.log("Arquivo TJMA, PDF gerado com sucesso.");
-            resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjma', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+            resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjma', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });
         }
 
     } catch (error) {

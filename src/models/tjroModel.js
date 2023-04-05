@@ -77,7 +77,7 @@ exports.tjro = async (dados) => {
                     console.log("Arquivo TJRO, PDF gerado com sucesso.");
                     browser.close();
                     await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}CERTIDAO_${valorNome}.pdf`);
-                    resultado.push({diretorio: pasta[1], cpf: CPF, orgao: 'tjro', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS'});
+                    resultado.push({diretorio: pasta[1], cpf: CPF, orgao: 'tjro', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS'});
                     return resultado;
                 } else {
                     console.log("Não foi possível atender o pedido para TJRO - Certidão Criminal 1° Grau. Tente novamente em alguns instantes.");

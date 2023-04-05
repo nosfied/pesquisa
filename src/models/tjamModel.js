@@ -109,7 +109,7 @@ exports.tjam = async (dados) => {
         let printPDF = ` https://consultasaj.tjam.jus.br/sco/realizarDownload.do?entity.nuPedido=${nPedido}&entity.dtPedido=${dtPedido}&entity.tpPessoa=F&entity.nuCpf=${cpf}`;        
         console.log("Arquivo TJAM 1° GRAU, PDF gerado com sucesso.");
         await page.waitForTimeout(20000);
-        resultado.push({cpf: printPDF, orgao: 'tjam', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
+        resultado.push({cpf: printPDF, orgao: 'tjam', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
     
     } catch (error) {        
         console.log("TJAM " + error);

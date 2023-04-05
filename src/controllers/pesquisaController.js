@@ -320,9 +320,9 @@ exports.tjsc = async (req, res) => {
         error.push(ERRONOMECOMPLETO); 
     }
 
-    if(!req.body.comarca){
-        error.push('É preciso selecionar uma Comarca.'); 
-    }
+    // if(!req.body.comarca){
+    //     error.push('É preciso selecionar uma Comarca.'); 
+    // }
 
     if(!req.body.sexo){
         error.push('É preciso selecionar o Sexo.'); 

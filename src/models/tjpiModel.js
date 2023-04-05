@@ -125,7 +125,7 @@ exports.tjpi = async (dados) => {
                     let pasta = diretorio.split(`files${process.env.BARRA}`);
                     console.log("Arquivo TJPI, PDF gerado com sucesso.");
                     browser.close();
-                    resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjpi', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+                    resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjpi', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS' });
                     return resultado;
                 }else{
                     console.log("Não foi possível atender o pedido para TJPI - Certidão Criminal 1° Grau. Tente novamente em alguns instantes.");

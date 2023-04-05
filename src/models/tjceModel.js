@@ -125,7 +125,7 @@ exports.tjce = async (dados) => {
                 console.log(certGerada);
                 if(certGerada == 'Certidão Gerada'){
                     browser.close();                
-                    resultado.push({ cpf: `/pesquisa/enviada/${EMAIL}`, orgao: 'tjce', documento: `Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS` });
+                    resultado.push({ cpf: `/pesquisa/enviada/${EMAIL}`, orgao: 'tjce', documento: `Certidão, AÇÕES E EXECUÇÕES CRIMINAIS` });
                     return resultado;
                 }
                 

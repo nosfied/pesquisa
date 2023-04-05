@@ -163,7 +163,7 @@ exports.tjrn = async (dados) => {
                 console.log("Arquivo TJRN, PDF gerado com sucesso.");
                 browser.close();
                 await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}Certidão -${certidao}.pdf`);
-                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjrn', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });                               
+                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjrn', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });                               
 
             }                        
 

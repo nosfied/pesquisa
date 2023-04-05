@@ -125,10 +125,10 @@ exports.tjsp = async (dados) => {
             let printPDF = `https://esaj.tjsp.jus.br/sco/realizarDownload.do?entity.nuPedido=${nPedido}&entity.dtPedido=${dtPedido}&entity.tpPessoa=F&entity.nuCpf=${cpf}`;        
         
             console.log("Arquivo TJSP 1° GRAU, PDF gerado com sucesso.");
-            resultado.push({cpf: printPDF, orgao: 'tjsp', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
+            resultado.push({cpf: printPDF, orgao: 'tjsp', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
         }else{
             console.log("Arquivo TJSP 1° GRAU, Já existe um pedido anterior.");
-            resultado.push({cpf: SITE_URL, orgao: 'tjsp', documento: 'Já existe um pedido anterior para Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU, verifique seu email.'});
+            resultado.push({cpf: SITE_URL, orgao: 'tjsp', documento: 'Já existe um pedido anterior para Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU, verifique seu email.'});
         }                            
 
     

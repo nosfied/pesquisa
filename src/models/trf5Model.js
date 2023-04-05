@@ -120,7 +120,7 @@ exports.trf5 = async (dados) => {
         console.log("Arquivo TRF5, PDF gerado com sucesso.");
         browser.close();
         await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}certidaonegativacriminal.pdf`);
-        resultado.push({diretorio: pasta[1], cpf: CPF, orgao: 'trf5', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS'});
+        resultado.push({diretorio: pasta[1], cpf: CPF, orgao: 'trf5', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
         return resultado;
     } catch (error) {        
         console.log("TRF 5 " + error);

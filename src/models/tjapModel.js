@@ -119,7 +119,7 @@ exports.tjap = async (dados) => {
                 console.log("Arquivo TJAP, PDF gerado com sucesso.");
                 browser.close();
                 await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}certidao-${nCertidao}.pdf`);
-                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjap', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjap', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS' });
                 return resultado;
             }                        
 

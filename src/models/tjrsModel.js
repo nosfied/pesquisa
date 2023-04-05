@@ -98,7 +98,7 @@ exports.tjrs = async (dados) => {
             let printPDF = `https://www.tjrs.jus.br/proc/alvara/alvara.php?identificador=${nPedido}&t=2`;        
         
             console.log("Arquivo TJRS 1° GRAU, PDF gerado com sucesso.");
-            resultado.push({cpf: printPDF, orgao: 'tjrs', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
+            resultado.push({cpf: printPDF, orgao: 'tjrs', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
             
     } catch (error) {        
         console.log("TJRS " + error);

@@ -88,7 +88,7 @@ exports.trf4 = async (dados) => {
             })                    
             console.log("Arquivo TRF4, PDF gerado com sucesso.");
             browser.close();
-            resultado.push({cpf: printPDF, orgao: 'trf4', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS'});
+            resultado.push({cpf: printPDF, orgao: 'trf4', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
             return resultado; 
         }       
 

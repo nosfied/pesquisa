@@ -139,7 +139,7 @@ exports.tjal = async (dados) => {
                 let printPDF = `https://www2.tjal.jus.br/sco/realizarDownload.do?entity.nuPedido=${nPedido}&entity.dtPedido=${dtPedido}&entity.tpPessoa=F&entity.nuCpf=${cpf}`;        
                 
                 console.log("Arquivo TJAL 1° GRAU, PDF gerado com sucesso.");
-                resultado.push({cpf: printPDF, orgao: 'tjal', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});                            
+                resultado.push({cpf: printPDF, orgao: 'tjal', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});                            
         
             }else{
                 

@@ -144,7 +144,7 @@ exports.tjpb = async (dados) => {
                 console.log("Arquivo TJPB, PDF gerado com sucesso.");
                 browser.close();
                 await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}Certidao.pdf`);
-                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjpb', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjpb', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });
             
             }
             

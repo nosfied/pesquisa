@@ -116,7 +116,7 @@ exports.tjse = async (dados) => {
             }
             let pasta = diretorio.split(`files${process.env.BARRA}`);
             console.log("Arquivo TJSE, PDF gerado com sucesso.");
-            resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjse', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CÍVEIS E CRIMINAIS' });
+            resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjse', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });
         }
 
     } catch (error) {

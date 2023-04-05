@@ -134,10 +134,10 @@ exports.tjms = async (dados) => {
                     let printPDF = `https://esaj.tjms.jus.br/sco/realizarDownload.do?entity.nuPedido=${nPedido}&entity.dtPedido=${dtPedido}&entity.tpPessoa=F&entity.nuCpf=${cpf}`;        
                 
                     console.log("Arquivo TJMS 1° GRAU, PDF gerado com sucesso.");
-                    resultado.push({cpf: printPDF, orgao: 'tjms', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
+                    resultado.push({cpf: printPDF, orgao: 'tjms', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
                 }else{
                     console.log("Arquivo TJMS 1° GRAU, Já existe um pedido anterior.");
-                    resultado.push({cpf: SITE_URL, orgao: 'tjms', documento: 'Já existe um pedido anterior para Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU, verifique seu email.'});
+                    resultado.push({cpf: SITE_URL, orgao: 'tjms', documento: 'Já existe um pedido anterior para Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU, verifique seu email.'});
                 }                            
         
             }else{
@@ -216,10 +216,10 @@ exports.tjms = async (dados) => {
         
                 
                     console.log("Arquivo TJMS 2° GRAU, PDF gerado com sucesso.");
-                    resultado.push({cpf: printPDF, orgao: 'tjms', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 2° GRAU'});
+                    resultado.push({cpf: printPDF, orgao: 'tjms', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 2° GRAU'});
                 }else{
                     console.log("Arquivo TJMS 2° GRAU, Já existe um pedido anterior.");
-                    resultado.push({cpf: SITE_URL2, orgao: 'tjms', documento: 'Já existe um pedido anterior para Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 2° GRAU, verifique seu email.'});
+                    resultado.push({cpf: SITE_URL2, orgao: 'tjms', documento: 'Já existe um pedido anterior para Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 2° GRAU, verifique seu email.'});
                 }                             
             
             }

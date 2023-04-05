@@ -121,9 +121,9 @@ exports.tjac = async (dados) => {
         let dtPedido = await page.$eval('body > table:nth-child(4) > tbody > tr > td > form > div:nth-child(2) > table.secaoFormBody > tbody > tr:nth-child(2) > td:nth-child(2) > span', el => el.textContent);
         let cpf = await page.$eval('body > table:nth-child(4) > tbody > tr > td > form > div:nth-child(3) > table.secaoFormBody > tbody > tr:nth-child(4) > td:nth-child(2) > table > tbody > tr > td > span > span', el => el.textContent);
         let printPDF = ` https://esaj.tjac.jus.br/sco/realizarDownload.do?entity.nuPedido=${nPedido}&entity.dtPedido=${dtPedido}&entity.tpPessoa=F&entity.nuCpf=${cpf}`;        
-        console.log("Arquivo TJAC 1° GRAU, PDF gerado com sucesso.");
+        console.log("Arquivo TJAC criminal 1° GRAU, PDF gerado com sucesso.");
         await page.waitForTimeout(20000);
-        resultado.push({cpf: printPDF, orgao: 'tjac', documento: 'Certidão de Distribuição, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
+        resultado.push({cpf: printPDF, orgao: 'tjac', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU'});
     
     } catch (error) {        
         console.log("TJAC " + error);
