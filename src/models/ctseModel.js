@@ -262,8 +262,9 @@ exports.ctse = async (dados) => {
                         'iframe[title="Certidão de Quitação Eleitoral"]',
                     );
                     const frame = await elementHandle.contentFrame();
-                    await page.waitForTimeout(6000);
+                    await page.waitForTimeout(4000);
                     let titulo = await frame.$eval('#viewer > div > div.textLayer > span:nth-child(195)', el => el.textContent);
+                    console.log(titulo);
                     nTitulo = titulo.replace(/\s/g, '');
                     console.log("Arquivo TSE Filiação Partidária - Histórico, Número do Título Obtido: " + nTitulo);
                 }
@@ -331,8 +332,6 @@ exports.ctse = async (dados) => {
                 await page.waitForTimeout(7000);
                 let pag = await browser.pages();
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
-                //await pag[2].keyboard.press('Enter', { delay: 2000 });
-
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
                 await pag[2].keyboard.press('Tab', { delay: 1000 });
                 await pag[2].keyboard.press('Enter', { delay: 2000 });
@@ -343,18 +342,14 @@ exports.ctse = async (dados) => {
                 diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
                 });
-                if (process.env.SO == 'windows'){
-                    let metricas = await pag[2].metrics();
-                    console.log(metricas);
-                    let tamando = Object.keys(metricas).length;
-                    console.log(`o tamanho: ${tamando}`);
-                    await pag[2].waitForTimeout(3000000);
-                    console.log('passou aqui');
-                    //await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 195, y: 30, width: 380, height: 470 } });
-                    //await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.pdf` });
+                if (process.env.SO == 'linux'){                    
+                    await pag[2].waitForTimeout(5000);
+                    await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.pdf`, landscape: true });
                 } else {
-                    await pag[2].screenshot({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.png`, clip: { x: 185, y: 40, width: 585, height: 580 } });
-                }                let pasta = diretorio.split(`files${process.env.BARRA}`);
+                    await pag[2].waitForTimeout(5000);
+                    await pag[2].pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tseFiliacaoHistorico.pdf`, landscape: true });
+                }                
+                let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo TSE Filiação Partidária - Histórico, PDF gerado com sucesso.");
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tseFiliacaoHistorico', documento: 'TSE Certidão - Filiação Partidária(Histórico)' });
             
