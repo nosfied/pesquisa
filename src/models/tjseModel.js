@@ -64,7 +64,11 @@ exports.tjse = async (dados) => {
                         continue;
                     } else {
                         await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
-                        await page.waitForTimeout(2000);                        
+                        await page.waitForTimeout(2000);
+                        await page.click('body > div.cc-window.cc-banner.cc-type-info.cc-theme-block.cc-bottom.cc-color-override-184807090 > div > a', { delay: 2000 });
+                        await page.waitForTimeout(2000);
+                        await page.click('body > main > principal > content > div > div > h1', { delay: 2000 });
+                        await page.keyboard.press('Tab', { delay: 2000 });
                         await page.keyboard.type('Outros Estados', { delay: 150 });
                         await page.keyboard.press('Tab', { delay: 2000 });
                         await page.keyboard.press('Tab', { delay: 2000 });
