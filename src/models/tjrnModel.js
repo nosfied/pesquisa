@@ -147,9 +147,29 @@ exports.tjrn = async (dados) => {
                     await page.click('#frmSearch\\:imCPF', { delay: 2000 });
                     await page.keyboard.type(CPF, { delay: 150 });
                     await page.click('#frmSearch\\:btnSearch', { delay: 2000 });
-                    await page.waitForTimeout(5000);                    
-                    await page.click('#frmSearchList\\:dtTable\\:0\\:btnImprimir > span.ui-button-text.ui-c', { delay: 2000 });
-                }
+                    await page.waitForTimeout(5000);                   
+                    let certSolicitada = await page.evaluate(async ()=>{        
+                        
+                        let cert = document.querySelector("#frmSearchList\\:dtTable_data > tr > td:nth-child(8) > span");
+                        return cert.textContent;                    
+                    })
+                    console.log(certSolicitada);
+                    if (certSolicitada && certSolicitada == 'Solicitada'){
+                        //Criação de diretório para armazenar arquivos da pesquisa
+                        let diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
+                            return dir;
+                        });
+                        await page.pdf({ path: `${diretorio}${process.env.BARRA}${CPF}tjrn.pdf` });
+                        let pasta = diretorio.split(`files${process.env.BARRA}`);
+                        console.log("Arquivo TJRN, PDF gerado com sucesso.");
+                        browser.close();
+                        resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjrn', documento: 'EXISTE SOLICITAÇÃO PENDENTE - Certidão Criminal 1° GRAU' });
+                    } else {
+                        await page.click('#frmSearchList\\:dtTable\\:0\\:btnImprimir > span.ui-button-text.ui-c', { delay: 2000 });
+                        await page.waitForTimeout(5000);
+                    }
+                    
+                }                 
                 await page.waitForTimeout(9000);
                 let nCertidao = await page.$eval('#frmSearchList\\:dtTable_data > tr.ui-widget-content.ui-datatable-even > td:nth-child(2)', el => el.textContent);                
                 let certidao = nCertidao.replace('/','_');
@@ -163,7 +183,8 @@ exports.tjrn = async (dados) => {
                 console.log("Arquivo TJRN, PDF gerado com sucesso.");
                 browser.close();
                 await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}Certidão -${certidao}.pdf`);
-                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjrn', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });                               
+                resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'tjrn', documento: 'Certidão, AÇÕES E EXECUÇÕES CRIMINAIS 1° GRAU' });           
+                                               
 
             }                        
 

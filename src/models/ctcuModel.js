@@ -130,7 +130,7 @@ exports.ctcu = async (dados) => {
                     }
                 }                
                 await pag[2].click('#R20507205424713788697 > div.t-Region-bodyWrap > div.t-Region-body > div:nth-child(9) > a', { delay: 2000 });                
-                await pag[2].waitForTimeout(9000);                                
+                await pag[2].waitForTimeout(20000);                                
                 //Criação de diretório para armazenar arquivos da pesquisa
                 let diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
@@ -170,7 +170,7 @@ exports.ctcu = async (dados) => {
                 }else{
                     await page.click('#formEmitirCertidaoNadaConsta\\:btnEmitirCertidao', { delay: 2000 });
                 }
-                await page.waitForTimeout(9000);                
+                await page.waitForTimeout(20000);                
                 //Criação de diretório para armazenar arquivos da pesquisa
                 let diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
