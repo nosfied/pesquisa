@@ -1,3 +1,4 @@
+
 let btLimpar = document.getElementById('btLimpar');
 btLimpar.addEventListener('click', async (event)=>{
     event.preventDefault();
@@ -219,6 +220,3 @@ for (const btao of botoesOrgao) {
 
     })
 }
-
-
-

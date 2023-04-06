@@ -39,7 +39,7 @@ class Login {
   valida(){
     this.cleanUp();
 
-    if(!validator.isEmail(this.body.email)) this.errors.push('Email inválido');
+    //if(!validator.isEmail(this.body.email)) this.errors.push('Email inválido');
     if(this.body.senha.length < 3 || this.body.senha.length > 50) this.errors.push('Senha incorreta');
   }
 

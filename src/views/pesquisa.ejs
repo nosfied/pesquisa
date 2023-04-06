@@ -113,6 +113,42 @@
             <table class="table">              
               <tbody>
                 
+                <!-- INSTRUÇÕES -->
+                <tr class="listaOrgao">
+                  <th scope="row">
+                    <div class="input-group mb-3">
+                      <button name="opcoesaviso" class="btn btn-outline-secondary btnList" type="button" id="btaviso">LEITURA OBRIGATÓRIA para utilização</button>                      
+                    </div>
+                  </th>                  
+                </tr>
+                <tr class="opcaoOculta" visibilidade="nao" id="opcoesaviso">                  
+                  <td>                    
+                    <table class="table">                      
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p style="margin: 2px; width: 50px;"><strong>Atenção</strong></p>
+                          </td>                           
+                          <td>                           
+                              <p>1 - Não há garantia de emissão da certidão, por tanto é, de total <strong>responsabilidade do usuário</strong>, a conferência
+                                do conteúdo no arquivo.</p>
+                              <p>2 - A ferramenta depende do comportamento de outros sitios, sendo necessário,
+                                em alguns casos, repetir a busca.</p>
+                              <p>3 - Após 5 tentativas com intervalos de 5 minutos entre elas, siga o link na mensagem de erro para uma
+                                tentativa manual, a fim de evitar o bloqueio de nossa aplicação.</p>
+                                <p>CONTATO DO DESENVOLVEDOR PARA SOLICITAÇÕES: (11)99764 4346 - WhatsApp</p>                               
+                          </td>
+                          
+                          <td style="padding: 0; width: 2px;"><button type="button" class="btn-close fechar" style="height: 2px;" aria-label="Close"></button></td>
+                        </tr>
+                        <tr>
+                          <td colspan="4"><table style="width: 100%;" id="boxaviso"></table></td>                                                      
+                        </tr>                                                
+                      </tbody>
+                    </table>                  
+                  </td>                  
+                </tr>
+
                 <!-- TRF1 -->
                 <tr class="listaOrgao">
                   <th scope="row">
