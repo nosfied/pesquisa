@@ -22,6 +22,7 @@ exports.login = async function(req, res){
         req.session.save(function(){
             return res.redirect('index');
         });
+        console.log(`USUÁRIO LOGADO: ${login.user.email}`);
     }catch(e){
         console.log(e);
         return res.render('404');
@@ -29,6 +30,7 @@ exports.login = async function(req, res){
 }
 
 exports.logout = function(req, res){
+    console.log(`USUÁRIO SAIU DO SISTEMA: ${Object.values(req.session.user)}`);
     req.session.destroy();
     res.redirect('/');
 }
