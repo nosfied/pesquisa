@@ -78,7 +78,8 @@ exports.ctcu = async (dados) => {
 
             } else if (tipo == 'inabilitados') {
                 await util.limparArquivosAntigos();
-                await page.goto(SITE_URL_2, { waitUntil: 'networkidle2' });
+                await page.goto(SITE_URL_2);
+                await pag[2].waitForTimeout(20000);
                 await page.click('body > div.cookies > div > div.cookies-btn > input');
                 await page.click('body > main > article > div:nth-child(3) > div > div > p');
                 await page.keyboard.press('Tab', { delay: 2000 });
