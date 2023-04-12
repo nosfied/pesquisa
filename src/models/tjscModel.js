@@ -102,7 +102,7 @@ exports.tjsc = async (dados) => {
                 await page.keyboard.type('CONCURSO',{delay:150});
                 await page.keyboard.press('Tab', {delay:1000});
                 await page.keyboard.press('Space', {delay:1000});                
-                await page.waitForTimeout(4000);
+                await page.waitForTimeout(9000);
                 let telaCaptcha = await page.evaluate(async ()=>{        
                         
                     return document.querySelector("body > div:nth-child(40)").style.visibility;                    
@@ -135,7 +135,7 @@ exports.tjsc = async (dados) => {
                     await page.keyboard.type(CPF,{delay:150});
                     await page.keyboard.press('Tab', {delay:1000});
                     await page.keyboard.press('Space', {delay:1000});                
-                    await page.waitForTimeout(4000);
+                    await page.waitForTimeout(9000);
                     let telaCaptcha = await page.evaluate(async ()=>{        
                         
                         return document.querySelector("body > div:nth-child(38)").style.visibility;                    

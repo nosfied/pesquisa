@@ -53,7 +53,7 @@ exports.crf = async (dados) => {
                 await page.click('#NI', { delay: 3000 });
                 await page.keyboard.type(CPF, { delay: 150 });
                 await page.click('#validar', { delay: 3000 });
-                await page.waitForTimeout(15000);               
+                await page.waitForTimeout(25000);               
                 // Elemento presente?
                 let emitirNovamente = await page.evaluate(() => {
                     const el = document.querySelector("#FrmSelecao > a:nth-child(6)");
@@ -64,7 +64,7 @@ exports.crf = async (dados) => {
                 })
                 if (emitirNovamente) {
                     await page.click('#FrmSelecao > a:nth-child(6)', { delay: 3000 });
-                    await page.waitForTimeout(15000);
+                    await page.waitForTimeout(25000);
                 }                
                 //Criação de diretório para armazenar arquivos da pesquisa
                 let diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {

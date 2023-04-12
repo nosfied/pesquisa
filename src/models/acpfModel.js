@@ -58,6 +58,7 @@ exports.acpf = async (dados) => {
                 await util.limparArquivosAntigos();
                 await page.goto(SITE_URL, { waitUntil: 'networkidle2' });
                 await page.waitForSelector('#inputNome_input', { delay: 3000 });
+                await page.waitForTimeout(120000);
                 await page.click('#inputNome_input', { delay: 3000 });
                 await page.keyboard.type(NOME, { delay: 150 });
                 await page.keyboard.press('Tab', { delay: 2000 });
@@ -101,7 +102,7 @@ exports.acpf = async (dados) => {
                 }else{
                     await page.click('body > div.wrapper.ng-scope > application > div > certidao > div > div:nth-child(2) > div > div > div.panel-body > form > div > div.form-group.form-group-sm > div > button.btn.btn-primary.btn-sm', { delay: 3000 });
                 }
-                await page.waitForTimeout(10000);               
+                await page.waitForTimeout(60000);               
                 //await page.waitForTimeout(2000000);
                 let nomeDir = NOME.replace(/ /g, "");
                 //Criação de diretório para armazenar arquivos da pesquisa

@@ -149,6 +149,7 @@ exports.ctcu = async (dados) => {
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.press('Space', {delay:1000});
+                await page.waitForTimeout(6000);
                 let telaCaptcha = await page.evaluate(async ()=>{        
                         
                     return document.querySelector("body > div:nth-child(12)").style.visibility;                    

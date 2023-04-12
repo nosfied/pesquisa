@@ -1,4 +1,3 @@
-
 let btLimpar = document.getElementById('btLimpar');
 btLimpar.addEventListener('click', async (event)=>{
     event.preventDefault();
@@ -68,6 +67,16 @@ for (const box of boxs) {
     })
 }
 
+function visitado() {
+    let linksVisitados = document.getElementsByClassName('linkdownload');
+
+    for (const link of linksVisitados) {
+        link.addEventListener('click', () => {
+            link.style.color = '#650ceb';
+        });
+    }
+}
+
 function carregaResult(result, linha, sitio, sitio2) {
     const linhaResultado = document.getElementById(linha);
     let org = linha.split('x')     
@@ -77,10 +86,10 @@ function carregaResult(result, linha, sitio, sitio2) {
             for (const res of result) {
                 if(res.cpf.length > 15){
                     linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
-                    <td><a href="${res.cpf}" target="_blank">Download</a></td></tr>`
+                    <td><a class="linkdownload" href="${res.cpf}" target="_blank">Download</a></td></tr>`
                 }else{
                     linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
-                    <td colspan="2"><a href="/pesquisa/files/${res.diretorio}/${res.cpf}/${res.orgao}" target="_blank">Download</a></td></tr>`
+                    <td colspan="2"><a class="linkdownload" href="/pesquisa/files/${res.diretorio}/${res.cpf}/${res.orgao}" target="_blank">Download</a></td></tr>`
                 }                    
             }
             
@@ -89,10 +98,10 @@ function carregaResult(result, linha, sitio, sitio2) {
             for (const res of result.result) {
                 if(res.cpf.length > 15){
                     linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
-                    <td><a href="${res.cpf}" target="_blank">Download</a></td></tr>`
+                    <td><a class="linkdownload" href="${res.cpf}" target="_blank">Download</a></td></tr>`
                 }else{
                     linhaResultado.innerHTML += `<tr><td colspan="2"><p class="msgSucesso">${res.documento}</p></td>
-                    <td colspan="2"><a href="/pesquisa/files/${res.diretorio}/${res.cpf}/${res.orgao}" target="_blank">Download</a></td></tr>`
+                    <td colspan="2"><a class="linkdownload" href="/pesquisa/files/${res.diretorio}/${res.cpf}/${res.orgao}" target="_blank">Download</a></td></tr>`
                 }                    
             }            
 
@@ -121,8 +130,9 @@ function carregaResult(result, linha, sitio, sitio2) {
         }
         
     }
-}
 
+    visitado();
+}
 
 let botoesOrgao = document.getElementsByClassName('btOrgao');
 for (const btao of botoesOrgao) {
@@ -136,7 +146,7 @@ for (const btao of botoesOrgao) {
 
         const linhaResultado = document.getElementById(opcaoPesq);
         linhaResultado.innerHTML = `<td colspan="4"><div id="prog" class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" aria-label="Example with label" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Processando... Pode levar alguns minutos, Aguarde!</div>   </div></td>`
+        <div class="progress-bar progress-bar-striped progress-bar-animated" aria-label="Example with label" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Processando... Pode demorar, Aguarde!</div>   </div></td>`
 
         let opcoesPesq = document.getElementsByClassName(opcaoPesq);
         

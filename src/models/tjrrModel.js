@@ -75,14 +75,10 @@ exports.tjrr = async (dados) => {
                     console.log("TJRR: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
                     console.log(quebrarCaptcha);
-                    await page.waitForTimeout(2000);
+                    await page.waitForTimeout(5000);
+                    await page.focus('#cpf', {delay:3000});
+                    await page.click('#cpf', {delay:3000});
                     await page.click('#form > div > div > div > a', {delay:2000});
-                    await page.focus('#cpf', {delay:1000});
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Enter', { delay: 1000 });
                     await page.waitForTimeout(15000);                            
                 }else{
                     await page.click('#form > div > div > div > a', {delay:2000});
@@ -95,12 +91,8 @@ exports.tjrr = async (dados) => {
                 console.log(certidao);
                 if(certidao < 300){
                     await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Tab', { delay: 1000 });
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.keyboard.press('Enter', { delay: 2000 });
-                    await page.waitForTimeout(3000);
+                    await page.keyboard.press('Enter', { delay: 2000 });                    
+                    await page.waitForTimeout(6000);
                     diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                         return dir;
                     });
