@@ -6,6 +6,7 @@ const loginController = require('./src/controllers/loginController');
 const pesquisaController = require('./src/controllers/pesquisaController');
 
 const { loginRequired } = require('./src/middlewares/middleware');
+const { checkCsrfError } = require('./src/middlewares/middleware');
 
 // Rotas da home
 route.get('/', homeController.index);
