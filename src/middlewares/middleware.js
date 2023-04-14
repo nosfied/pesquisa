@@ -5,16 +5,10 @@ exports.middlewareGlobal = (req, res, next) => {
     next();
   };
   
-  // exports.outroMiddleware = (req, res, next) => {
-  //   next();
-  // };
-  
   exports.checkCsrfError = (err, req, res, next) => {
-    if(err) {
-      console.log(err);
-      return res.render('404',{
-        user: req.session.user
-      });
+    if(err && err.code === 'EBADCSRFTOKEN') {
+      res.render('404');
+      return;
     }
     next();
   };

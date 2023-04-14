@@ -226,6 +226,7 @@ for (const btao of botoesOrgao) {
 
           } catch(e) {
             console.log(e);
+            document.location.reload();            
           }           
 
     })

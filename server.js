@@ -26,12 +26,12 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 const sessionOptions = session({
-    secret: 'akasdffjfjf mfkn84879298##$46&8!njekek pça~]~~~~90983usdasdasda a6()',
+    secret: process.env.SECRET,
     store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 1000 * 60* 60 * 24,
       httpOnly: true
     }
   });
@@ -46,8 +46,7 @@ app.use(csrf());
 
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
-app.use(csrfMiddleware);
-app.use(routes);
+app.use(csrfMiddleware);app.use(routes);
 
 app.on('pronto', () => {
     app.listen(4000, () => {
