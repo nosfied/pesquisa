@@ -60,17 +60,17 @@ exports.acpf = async (dados) => {
                 await page.waitForSelector('#inputNome_input', { delay: 3000 });
                 await page.waitForTimeout(120000);
                 await page.click('#inputNome_input', { delay: 3000 });
-                await page.keyboard.type(NOME, { delay: 150 });
+                await page.keyboard.type(NOME, { delay: 200 });
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.press('Tab', { delay: 2000 });
-                await page.keyboard.type(NOMEMAE,{delay:150});
+                await page.keyboard.type(NOMEMAE,{delay:300});
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.type(RG,{delay:150});
                 await page.keyboard.press('Tab', { delay: 2000 });
-                await page.keyboard.type(ORGAOEXP, { delay: 150 });
+                await page.keyboard.type(ORGAOEXP, { delay: 200 });
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.type(UFRG,{delay:150});
                 await page.keyboard.press('Tab', { delay: 2000 });
@@ -78,7 +78,7 @@ exports.acpf = async (dados) => {
                 await page.keyboard.press('Tab', { delay: 2000 });
                 await page.keyboard.type(NASCIMENTO,{delay:150});
                 await page.keyboard.press('Tab', {delay:2000});
-                await page.keyboard.type(CPF, { delay: 150 });
+                await page.keyboard.type(CPF, { delay: 300 });
                 await page.keyboard.press('Tab', {delay:2000});
                 await page.keyboard.press('Space', {delay:2000});
                 let telaCaptcha = await page.evaluate(async ()=>{        

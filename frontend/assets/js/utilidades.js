@@ -225,7 +225,7 @@ for (const btao of botoesOrgao) {
             carregaResult(pResult, opcaoPesq, linkOrgao.value, linkOrgao2.value);            
 
           } catch(e) {
-            console.log(e);
+            console.log(e.message);
             document.location.reload();            
           }           
 
