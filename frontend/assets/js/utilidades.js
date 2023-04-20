@@ -137,6 +137,7 @@ function carregaResult(result, linha, sitio, sitio2) {
 let botoesOrgao = document.getElementsByClassName('btOrgao');
 for (const btao of botoesOrgao) {
     btao.addEventListener('click', async (event)=>{
+        btao.disabled = true;
         event.preventDefault();
         let rota = btao.getAttribute('rota');
         let link = btao.getAttribute('link');
@@ -222,9 +223,12 @@ for (const btao of botoesOrgao) {
                   })
             })
             let pResult = await result.json();
-            carregaResult(pResult, opcaoPesq, linkOrgao.value, linkOrgao2.value);            
+            carregaResult(pResult, opcaoPesq, linkOrgao.value, linkOrgao2.value);
+            btao.disabled = false;
+                        
 
           } catch(e) {
+            btao.disabled = false;
             console.log(e.message);
             document.location.reload();            
           }           
