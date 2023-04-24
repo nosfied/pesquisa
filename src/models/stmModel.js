@@ -81,7 +81,8 @@ exports.stm = async (dados) => {
                 //screenshot modo headless
                 //let imagem = await page.screenshot({ path: `${diretorio}${process.env.BARRA}captcha.png`, clip:{x:380, y:600, width:240, height:65}, encoding: 'base64'});               
                 let texto_captcha = await util.resolve_captcha_normal(imagem);
-                await page.keyboard.type(texto_captcha,{delay:150});
+                let img = await texto_captcha.trim();
+                await page.keyboard.type(img,{delay:150});
                 await frame.click('body > form > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(7) > td > input', { delay: 3000 });
                 await page.waitForTimeout(15000);               
                 await copyFile(`${paths.dirDownloadPadrao()}${process.env.BARRA}Certidao.pdf`, `${diretorio}${process.env.BARRA}${CPF}stm.pdf`);

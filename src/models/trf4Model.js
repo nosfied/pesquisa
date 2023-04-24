@@ -69,7 +69,7 @@ exports.trf4 = async (dados) => {
         }else{
             await page.click('#botaoEmitir', {delay:2000});
         }
-        await page.waitForTimeout(4000);
+        await page.waitForTimeout(9000);
         //Gerar arquivo pdf
         let botaoPrint = await page.$eval('#botaoVisualizar', bt => bt.value);
         if (botaoPrint) {

@@ -70,7 +70,8 @@ exports.tjrs = async (dados) => {
         }else{
             await page.keyboard.press('Tab', {delay:1000});
             await page.keyboard.press('Tab', {delay:1000});
-        }            
+        }
+        await page.waitForTimeout(2000);
         await page.keyboard.type(CPF,{delay:150});
         await page.keyboard.press('Tab', {delay:1000});
         await page.keyboard.type(NOMEMAE,{delay:150});
