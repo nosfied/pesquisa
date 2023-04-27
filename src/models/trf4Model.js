@@ -54,7 +54,7 @@ exports.trf4 = async (dados) => {
 
         let telaCaptcha = await page.evaluate(async ()=>{        
                         
-            return document.querySelector("body > div:nth-child(5)").style.visibility;                    
+            return document.querySelector("body > div:nth-child(6)").style.visibility;                    
         })
         console.log(telaCaptcha);
     
