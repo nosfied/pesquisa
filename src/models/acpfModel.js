@@ -89,7 +89,7 @@ exports.acpf = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("ACPF: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.waitForTimeout(6000);
                     await page.focus('#inputCpf_input', { delay: 3000 });
                     await page.keyboard.press('Tab', {delay:2000});
@@ -105,15 +105,17 @@ exports.acpf = async (dados) => {
                 await page.waitForTimeout(60000);               
                 //await page.waitForTimeout(2000000);
                 let nomeDir = NOME.replace(/ /g, "");
+                let nomeDirUp = nomeDir.toUpperCase();
+                let nomeDirSemAcento = nomeDirUp.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
                 //Criação de diretório para armazenar arquivos da pesquisa
                 let diretorio = await mkdir(paths.files() + `${process.env.BARRA}` + Date.now(), { recursive: true }, (err, dir) => {
                     return dir;
                 });
-                await copyFile(`${paths.dirDownloadPadrao()}${process.env.BARRA}CERTIDAO-${nomeDir}.pdf`, `${diretorio}${process.env.BARRA}${CPF}acpf.pdf`);
+                await copyFile(`${paths.dirDownloadPadrao()}${process.env.BARRA}CERTIDAO-${nomeDirSemAcento}.pdf`, `${diretorio}${process.env.BARRA}${CPF}acpf.pdf`);
                 let pasta = diretorio.split(`files${process.env.BARRA}`);
                 console.log("Arquivo ACPF, PDF gerado com sucesso.");
                 browser.close();
-                await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}CERTIDAO-${nomeDir}.pdf`);
+                await unlink(`${paths.dirDownloadPadrao()}${process.env.BARRA}CERTIDAO-${nomeDirSemAcento}.pdf`);
                 resultado.push({ diretorio: pasta[1], cpf: CPF, orgao: 'acpf', documento: 'Certidão de Antecedentes Criminais da Polícia Federal' });
                 
             }
