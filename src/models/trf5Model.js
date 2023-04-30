@@ -13,7 +13,8 @@ puppeteer.use(StealthPlugin());
 
 exports.trf5 = async (dados) => {    
 
-    console.log("TRF5 Processando...");
+    const data = new Date;
+    console.log("TRF5 Processando... " + data);
     const SITE_URL = "https://certidoes.trf5.jus.br/certidoes2022/";
     const CAPTCHA_SITE_KEY = "";
     const ACTION = "";
@@ -36,10 +37,6 @@ exports.trf5 = async (dados) => {
         await page.goto(SITE_URL, {waitUntil: 'networkidle2'});
         await page.hover('#j_idt56\\:j_idt57 > ul > li.ui-widget.ui-menuitem.ui-corner-all.ui-menu-parent > a', { delay: 2000 });
         await page.click('#j_idt56\\:j_idt57 > ul > li.ui-widget.ui-menuitem.ui-corner-all.ui-menu-parent > ul > li:nth-child(2) > a', { delay: 2000 });
-        
-        //O Serviço de consulta de processos está indisponível,
-        //favor solicitar a verificação junto ao setor responsável.
-        //HTTP error code: 503 (Service Unavailable)
         await page.waitForSelector('#form\\:orgaoInternet');        
         await page.click('#form\\:orgaoInternet', { delay: 2000 });
         await page.keyboard.press('ArrowDown', {delay:1000});        

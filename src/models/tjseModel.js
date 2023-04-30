@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjse = async (dados) => {    
 
-    console.log("TJSE Processando...");
+    const data = new Date;
+    console.log("TJSE Processando... " + data);
     const SITE_URL = "https://www.tjse.jus.br/portal/servicos/judiciais/certidao-online/solicitacao-de-certidao-negativa";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

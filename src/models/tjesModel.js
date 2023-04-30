@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjes = async (dados) => {    
 
-    console.log("TJES Processando...");
+    const data = new Date;
+    console.log("TJES Processando... " + data);
     const SITE_URL = "https://sistemas.tjes.jus.br/certidaonegativa/sistemas/certidao/CERTIDAOPESQUISA.cfm";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

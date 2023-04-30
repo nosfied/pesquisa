@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjpi = async (dados) => {    
 
-    console.log("TJPI Processando...");
+    const data = new Date;
+    console.log("TJPI Processando... " + data);
     const SITE_URL = "https://www.tjpi.jus.br/themisconsulta/certidao";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

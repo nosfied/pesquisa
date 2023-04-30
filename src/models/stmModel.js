@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.stm = async (dados) => {    
 
-    console.log("STM Processando...");
+    const data = new Date;
+    console.log("STM Processando... " + data);
     const SITE_URL = "https://www.stm.jus.br/servicos-stm/certidao-negativa/emitir-certidao-negativa";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjrs = async (dados) => {    
 
-    console.log("TJRS Processando...");
+    const data = new Date;
+    console.log("TJRS Processando... " + data);
     const SITE_URL = "https://www.tjrs.jus.br/proc/alvara/";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

@@ -27,8 +27,9 @@ puppeteer.use(
 )
 
 exports.acpf = async (dados) => {    
-
-    console.log("ACPF Processando...");
+    
+    const data = new Date;
+    console.log("ACPF Processando... " + data);
     const SITE_URL = "https://servicos.dpf.gov.br/antecedentes-criminais/certidao";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -102,8 +103,7 @@ exports.acpf = async (dados) => {
                 }else{
                     await page.click('body > div.wrapper.ng-scope > application > div > certidao > div > div:nth-child(2) > div > div > div.panel-body > form > div > div.form-group.form-group-sm > div > button.btn.btn-primary.btn-sm', { delay: 3000 });
                 }
-                await page.waitForTimeout(60000);               
-                //await page.waitForTimeout(2000000);
+                await page.waitForTimeout(60000);
                 let nomeDir = NOME.replace(/ /g, "");
                 let nomeDirUp = nomeDir.toUpperCase();
                 let nomeDirSemAcento = nomeDirUp.normalize('NFD').replace(/[\u0300-\u036f]/g, "");

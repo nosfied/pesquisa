@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjsp = async (dados) => {    
 
-    console.log("TJSP Processando...");
+    const data = new Date;
+    console.log("TJSP Processando... " + data);
     const SITE_URL = "https://esaj.tjsp.jus.br/sco/abrirCadastro.do";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

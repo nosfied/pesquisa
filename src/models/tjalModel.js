@@ -26,8 +26,9 @@ puppeteer.use(
 )
 
 exports.tjal = async (dados) => {    
-
-    console.log("TJAL Processando...");
+    
+    const data = new Date;
+    console.log("TJAL Processando... " + data);
     const SITE_URL = "https://www2.tjal.jus.br/sco/abrirCadastro.do";
     const SITE_URL2 = "https://certidao-sg.tjal.jus.br/";
     const TIPOS = dados.documento;
@@ -104,7 +105,7 @@ exports.tjal = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TJAL: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.waitForTimeout(2000);
                     await page.click('#confirmacaoInformacoes', {delay:4000});
                     await page.click('#entity\\.endNomePesq\\.municipio\\.nmMunicipio', {delay:4000});

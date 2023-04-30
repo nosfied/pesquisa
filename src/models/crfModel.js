@@ -27,8 +27,9 @@ puppeteer.use(
 )
 
 exports.crf = async (dados) => {    
-
-    console.log("CRF Processando...");
+    
+    const data = new Date;
+    console.log("CRF Processando... " + data);
     const SITE_URL = "https://solucoes.receita.fazenda.gov.br/Servicos/certidaointernet/PF/Emitir";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

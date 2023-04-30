@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjro = async (dados) => {    
 
-    console.log("TJRO Processando...");
+    const data = new Date;
+    console.log("TJRO Processando... " + data);
     const SITE_URL = "https://www.tjro.jus.br/certidao-unificada/certidaoPublicaEmitir";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

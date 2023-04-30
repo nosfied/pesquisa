@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjac = async (dados) => {    
 
-    console.log("TJAC Processando...");
+    const data = new Date;
+    console.log("TJAC Processando... " + data);
     const SITE_URL = "https://esaj.tjac.jus.br/sco/abrirCadastro.do";
     const CPF = dados.cpf;
     const NOME = dados.nome;
@@ -80,7 +81,7 @@ exports.tjac = async (dados) => {
         if(telaCaptcha == 'visible') {        
             console.log("TJAC: Processo interrompido pelo Captcha. Tentando solucionar...");            
             let quebrarCaptcha = await page.solveRecaptchas();
-            console.log(quebrarCaptcha);      
+            //console.log(quebrarCaptcha);      
             await page.waitForTimeout(3000);
             await page.focus('#identity\\.solicitante\\.deEmail', { delay: 2000 });
             await page.keyboard.press('Tab', {delay:1000});

@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjpe = async (dados) => {    
 
-    console.log("TJPE Processando...");
+    const data = new Date;
+    console.log("TJPE Processando... " + data);
     const SITE_URL = "https://www.tjpe.jus.br/antecedentescriminaiscliente/xhtml/manterPessoa/tipoPessoa.xhtml";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

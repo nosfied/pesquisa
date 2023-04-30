@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjpb = async (dados) => {    
 
-    console.log("TJPB Processando...");
+    const data = new Date;
+    console.log("TJPB Processando... " + data);
     const SITE_URL = "https://app.tjpb.jus.br/certo/paginas/publico/solicitarCertidao.jsf";
     const SITE_URL_CONSULTAR = "https://app.tjpb.jus.br/certo/paginas/publico/recuperarCertidao.jsf";
     const TIPOS = dados.documento;

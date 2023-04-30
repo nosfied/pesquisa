@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjce = async (dados) => {    
 
-    console.log("TJCE Processando...");
+    const data = new Date;
+    console.log("TJCE Processando... " + data);
     const SITE_URL = "https://sirece.tjce.jus.br/sirece-web/nova/solicitacao.jsf";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -112,7 +113,7 @@ exports.tjce = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TJCE: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.click('#form-nova-solicitacao\\:btnConfirmarInclusao > span', { delay: 1000 });                           
                 }else{
                     await page.click('#form-nova-solicitacao\\:btnConfirmarInclusao > span', { delay: 2000 });            

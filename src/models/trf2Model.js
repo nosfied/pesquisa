@@ -25,7 +25,8 @@ puppeteer.use(
 
 exports.trf2 = async (dados) =>{
 
-    console.log("TRF2 Processando...");
+    const data = new Date;
+    console.log("TRF2 Processando... " + data);
     const SITE_URL = "https://certidoes.trf2.jus.br/certidoes/#/principal/solicitar";
     const CAPTCHA_SITE_KEY = "6LfX_x4UAAAAAM9iOUil8y2DwMe1IYLspfznPGij";
     const CPF = dados.cpf;
@@ -67,7 +68,7 @@ exports.trf2 = async (dados) =>{
         if (telaCaptcha == 'visible') {
             console.log("TRF2: Processo interrompido pelo Captcha. Tentando solucionar...");
             let quebrarCaptcha = await page.solveRecaptchas();
-            console.log(quebrarCaptcha);
+            //console.log(quebrarCaptcha);
         }
 
         await page.waitForTimeout(7000);

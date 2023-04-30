@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjto = async (dados) => {    
 
-    console.log("TJTO Processando...");
+    const data = new Date;
+    console.log("TJTO Processando... " + data);
     const SITE_URL = "https://eproc1.tjto.jus.br/eprocV2_prod_1grau/externo_controlador.php?acao=cj_online&acao_origem=&acao_retorno=cj";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

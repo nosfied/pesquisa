@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjsc = async (dados) => {    
 
-    console.log("TJSC Processando...");
+    const data = new Date;
+    console.log("TJSC Processando... " + data);
     const SITE_URL = "https://certidoes.tjsc.jus.br/";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -111,7 +112,7 @@ exports.tjsc = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TJSC: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.click('#form_certidao > div > div:nth-child(16) > div > div > div > input[type=checkbox]', { delay: 2000 });
                     await page.click('#enviar', { delay: 1000 });                           
                 }else{
@@ -144,7 +145,7 @@ exports.tjsc = async (dados) => {
                     if(telaCaptcha == 'visible') {        
                         console.log("TJSC: Processo interrompido pelo Captcha. Tentando solucionar...");            
                         let quebrarCaptcha = await page.solveRecaptchas();
-                        console.log(quebrarCaptcha);
+                        //console.log(quebrarCaptcha);
                         await page.click('body > div.page-wrapper > div.page-wrapper-row.full-height > div > div > div > div.page-content > div > div > div > div.portlet.box.default > div.portlet-body > form > div > div:nth-child(4) > div > div > div > input', { delay: 1000 });                           
                     }else{
                         await page.click('body > div.page-wrapper > div.page-wrapper-row.full-height > div > div > div > div.page-content > div > div > div > div.portlet.box.default > div.portlet-body > form > div > div:nth-child(4) > div > div > div > input', { delay: 1000 });

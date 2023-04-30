@@ -29,7 +29,8 @@ puppeteer.use(
 
 exports.ctse = async (dados) => {    
 
-    console.log("CTSE Processando...");
+    const data = new Date;
+    console.log("CTSE Processando... " + data);
     const SITE_URL = "https://www.tse.jus.br/";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -202,7 +203,7 @@ exports.ctse = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("CTSE - Filiação Simples: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await frame.solveRecaptchas();
-                    console.log(quebrarCaptcha);      
+                    //console.log(quebrarCaptcha);      
                     await page.waitForTimeout(3000);
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-gerar-certidao > section > div > article > form > mat-card > mat-card-content > div:nth-child(6) > button:nth-child(3) > span.mat-button-wrapper', { delay: 2000 });
                 } else {
@@ -319,7 +320,7 @@ exports.ctse = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("CTSE - Filiação Histórico: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await frame.solveRecaptchas();
-                    console.log(quebrarCaptcha);      
+                    //console.log(quebrarCaptcha);      
                     await page.waitForTimeout(3000);
                     await frame.click('body > app-root > div > app-principal > mat-sidenav-container > mat-sidenav-content > app-gerar-certidao > section > div > article > form > mat-card > mat-card-content > div:nth-child(6) > button:nth-child(3) > span.mat-button-wrapper', { delay: 2000 });
                 } else {

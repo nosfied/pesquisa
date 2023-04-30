@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjgo = async (dados) => {    
 
-    console.log("TJGO Processando...");
+    const data = new Date;
+    console.log("TJGO Processando... " + data);
     const SITE_URL_1GRAU_CRIMINAL = "https://projudi.tjgo.jus.br/CertidaoNegativaPositivaPublica?PaginaAtual=1&TipoArea=2&InteressePessoal=S";
     const SITE_URL_1GRAU_CIVEL = "https://projudi.tjgo.jus.br/CertidaoNegativaPositivaPublica?PaginaAtual=1&TipoArea=1&InteressePessoal=&Territorio=&Finalidade=";
     const TIPOS = dados.documento;

@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjrr = async (dados) => {    
 
-    console.log("TJRR Processando...");
+    const data = new Date;
+    console.log("TJRR Processando... " + data);
     const SITE_URL = "http://www.tjrr.jus.br/index.php/servicos/certidao-negativa";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -74,7 +75,7 @@ exports.tjrr = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TJRR: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.waitForTimeout(5000);
                     await page.focus('#cpf', {delay:3000});
                     await page.click('#cpf', {delay:3000});

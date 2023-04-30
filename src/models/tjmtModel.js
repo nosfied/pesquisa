@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjmt = async (dados) => {    
 
-    console.log("TJMT Processando...");
+    const data = new Date;
+    console.log("TJMT Processando... " + data);
     const SITE_URL = "https://sec.tjmt.jus.br/primeiro-grau/certidao-negativa-pessoa-fisica";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

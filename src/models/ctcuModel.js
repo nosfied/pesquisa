@@ -29,7 +29,8 @@ puppeteer.use(
 
 exports.ctcu = async (dados) => {    
 
-    console.log("CTCU Processando...");
+    const data = new Date;    
+    console.log("CTCU Processando... " + data);
     const SITE_URL_1 = "https://contasirregulares.tcu.gov.br/ordsext/f?p=105:21:::NO:3,4,5::&cs=3YHKce9GUx-Va5aXOPtKx-FhtvwI";
     const SITE_URL_2 = "https://portal.tcu.gov.br/carta-de-servicos/";
     const SITE_URL_3 = "https://contas.tcu.gov.br/certidao/Web/Certidao/NadaConsta/home.faces";
@@ -158,7 +159,7 @@ exports.ctcu = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TCU Processos: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.waitForTimeout(6000);
                     await page.focus('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
                     //await page.click('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });

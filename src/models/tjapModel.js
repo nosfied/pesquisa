@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjap = async (dados) => {    
 
-    console.log("TJAP Processando...");
+    const data = new Date;
+    console.log("TJAP Processando... " + data);
     const SITE_URL = "http://tucujuris.tjap.jus.br/tucujuris/pages/certidao-publica/certidao-publica.html";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -102,7 +103,7 @@ exports.tjap = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TJAP: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.click('#main-content > div > section > form > div.row.espaco-abaixo-2x > div > input', { delay: 2000 });
                 }                
                 await page.waitForTimeout(9000);

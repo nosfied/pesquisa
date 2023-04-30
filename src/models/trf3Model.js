@@ -50,7 +50,8 @@ async function pegarCookiesTrf3(){
 
 exports.trf3 = async (dados) =>{
 
-    console.log("TRF3 Processando...");
+    const data = new Date;
+    console.log("TRF3 Processando... " + data);
     const SITE_URL = "https://www.trf3.jus.br/";
     const CAPTCHA_SITE_KEY = "6LdDCtAZAAAAAOMqmEijWlAhOAvdXLukZCLWmwkD";
     const ACTION = "t";
@@ -140,7 +141,7 @@ exports.trf3 = async (dados) =>{
         if(telaCaptcha == 'visible') {        
             console.log("TRF3: Processo interrompido pelo Captcha. Tentando solucionar...");            
             let quebrarCaptcha = await pag[2].solveRecaptchas();
-            console.log(quebrarCaptcha);
+            //console.log(quebrarCaptcha);
             await pag[2].waitForTimeout(4000);
             await pag[2].click('#submit', {delay:2000});                    
         }else{

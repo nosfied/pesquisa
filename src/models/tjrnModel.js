@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjrn = async (dados) => {    
 
-    console.log("TJRN Processando...");
+    const data = new Date;
+    console.log("TJRN Processando... " + data);
     const SITE_URL = "https://apps.tjrn.jus.br/certidoes/f/public/form.xhtml";
     const SITE_URL_ACOMPANHAR = "https://apps.tjrn.jus.br/certidoes/f/public/list.xhtml";
     const TIPOS = dados.documento;
@@ -99,7 +100,7 @@ exports.tjrn = async (dados) => {
                 if(telaCaptcha == 'visible') {        
                     console.log("TJRN: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();
-                    console.log(quebrarCaptcha);
+                    //console.log(quebrarCaptcha);
                     await page.click('#frmSave\\:btnSaveAndClean', { delay: 2000 });
                 }else{
                     await page.click('#frmSave\\:btnSaveAndClean', { delay: 2000 });

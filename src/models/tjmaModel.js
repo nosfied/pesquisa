@@ -28,7 +28,8 @@ puppeteer.use(
 
 exports.tjma = async (dados) => {    
 
-    console.log("TJMA Processando...");
+    const data = new Date;
+    console.log("TJMA Processando... " + data);
     const SITE_URL = "https://jurisconsult.tjma.jus.br/#/certidao-generate-state-certificate-form";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -110,7 +111,7 @@ exports.tjma = async (dados) => {
                         if (!nPedido) {
                             console.log("TJMA: Processo interrompido pelo Captcha. Tentando solucionar...");            
                             let quebrarCaptcha = await page.solveRecaptchas();
-                            console.log(quebrarCaptcha);
+                            //console.log(quebrarCaptcha);
                             await page.click('body > ion-app > ng-component > ion-split-pane > ion-nav > page-certidao-generate-state-certificate-form > ion-content > div.scroll-content > form > ion-list > div > button', { delay: 2000 });
                             await page.waitForTimeout(30000);
                             nPedido = await page.evaluate(async () => {

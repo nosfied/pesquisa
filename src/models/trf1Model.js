@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.trf1 = async (dados) => {
 
-    console.log("TRF1 Processando...");
+    const data = new Date;
+    console.log("TRF1 Processando... " + data);
     const SITIOCOOKIES = 'https://portal.trf1.jus.br/portaltrf1/pagina-inicial.htm';
     const SITE_URL = "https://sistemas.trf1.jus.br/certidao/#/solicitacao";
     const CAPTCHA_SITE_KEY = "6Le8WeUUAAAAAEQ0sNuNgYdqVmklhQCSEKigDDDT";
@@ -81,7 +82,7 @@ exports.trf1 = async (dados) => {
         if (!paginaCertidao) {
             console.log("TRF1: Processo interrompido pelo reCaptcha. Tentando solucionar...");
             const quebrarCaptcha = await page.solveRecaptchas();
-            console.log(quebrarCaptcha);
+            //console.log(quebrarCaptcha);
             await page.waitForTimeout(5000);
             for (let index = 0; index < 8; index++) {
                 if(paginaCertidao) continue;

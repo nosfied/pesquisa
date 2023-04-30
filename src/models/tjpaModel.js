@@ -29,7 +29,8 @@ puppeteer.use(
 
 exports.tjpa = async (dados) => {    
 
-    console.log("TJPA Processando...");
+    const data = new Date;
+    console.log("TJPA Processando... " + data);
     const SITE_URL = "https://consultas.tjpa.jus.br/certidao/pages/pesquisaGeralCentralCertidao.action";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

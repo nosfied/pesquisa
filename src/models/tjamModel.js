@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjam = async (dados) => {    
 
-    console.log("TJAM Processando...");
+    const data = new Date;
+    console.log("TJAM Processando... " + data);
     const SITE_URL = "https://consultasaj.tjam.jus.br/sco/abrirCadastro.do";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;
@@ -93,7 +94,7 @@ exports.tjam = async (dados) => {
         if(telaCaptcha == 'visible') {        
             console.log("TJAM: Processo interrompido pelo Captcha. Tentando solucionar...");            
             let quebrarCaptcha = await page.solveRecaptchas();
-            console.log(quebrarCaptcha);
+            //console.log(quebrarCaptcha);
             await page.focus('#confirmacaoInformacoes', { delay: 3000 });                           
             await page.keyboard.press('Space', {delay:1000});           
             //await page.click('#confirmacaoInformacoes', { delay: 3000 });                           

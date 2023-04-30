@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjba = async (dados) => {    
 
-    console.log("TJBA Processando...");
+    const data = new Date;
+    console.log("TJBA Processando... " + data);
     const SITE_URL = "http://www5.tjba.jus.br/portal/certidoes-do-primeiro-grau/";
     const TIPOS = dados.documento;
     const CPF = dados.cpf;

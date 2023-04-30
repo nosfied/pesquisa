@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjdf = async (dados) => {    
 
-    console.log("TJDF Processando...");
+    const data = new Date;
+    console.log("TJDF Processando... " + data);
     const SITE_URL = "https://cnc.tjdft.jus.br/solicitacao-externa";
     const sitioParaCookies = 'https://www.tjdft.jus.br/';
     const CPF = dados.cpf;
@@ -67,7 +68,7 @@ exports.tjdf = async (dados) => {
         if (telaCaptcha == 'visible') {
             console.log("TJDF: Processo interrompido pelo Captcha. Tentando solucionar...");
             let quebrarCaptcha = await page.solveRecaptchas();
-            console.log(quebrarCaptcha);
+            //console.log(quebrarCaptcha);
             await page.waitForTimeout(2000);
             await page.click('#q-app > div > div > div > div > div.q-card__section.q-card__section--vert > div > div.q-stepper__content.q-panel-parent > div > div > div > div > div > div > button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--standard.q-btn--rectangle.bg-primary.text-white.q-btn--actionable.q-focusable.q-hoverable > span.q-btn__content.text-center.col.items-center.q-anchor--skip.justify-center.row > span', { delay: 1000 });
             await page.waitForTimeout(2000);

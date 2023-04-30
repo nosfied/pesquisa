@@ -22,7 +22,8 @@ puppeteer.use(
 
 exports.trf4 = async (dados) => {
 
-    console.log("TRF4 Processando...");
+    const data = new Date;
+    console.log("TRF4 Processando... " + data);
     const SITE_URL = "https://www2.trf4.jus.br/trf4/processos/certidao/index.php";
     const CAPTCHA_SITE_KEY = "";
     const ACTION = "";
@@ -61,7 +62,7 @@ exports.trf4 = async (dados) => {
         if(telaCaptcha == 'visible') {        
             console.log("TRF4: Processo interrompido pelo Captcha. Tentando solucionar...");            
             let quebrarCaptcha = await page.solveRecaptchas();
-            console.log(quebrarCaptcha);
+            //console.log(quebrarCaptcha);
             await page.waitForTimeout(4000);
             await page.click('#botaoEmitir', {delay:2000});
             await page.waitForTimeout(4000);   

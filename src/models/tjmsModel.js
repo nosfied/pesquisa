@@ -27,7 +27,8 @@ puppeteer.use(
 
 exports.tjms = async (dados) => {    
 
-    console.log("TJMS Processando...");
+    const data = new Date;
+    console.log("TJMS Processando... " + data);
     const SITE_URL = "https://esaj.tjms.jus.br/sco/abrirCadastro.do";
     const SITE_URL2 = "https://esaj.tjms.jus.br/scosg/abrirCadastro.do";
     const TIPOS = dados.documento;
@@ -57,9 +58,7 @@ exports.tjms = async (dados) => {
             if(tipo == 'criminal1' || tipo == 'civel1'){
                                  
                 await util.limparArquivosAntigos();        
-                await page.goto(SITE_URL, {waitUntil: 'networkidle2'});
-                //const quebrarCaptcha = await page.solveRecaptchas();
-                //console.log(quebrarCaptcha);        
+                await page.goto(SITE_URL, {waitUntil: 'networkidle2'});        
                 await page.click('#id_sco\\.pedido\\.label\\.cdComarca', { delay: 2000 });
                 await page.keyboard.type(COMARCA,{delay:150});
                 await page.keyboard.press('Enter', {delay:1000});
@@ -111,7 +110,7 @@ exports.tjms = async (dados) => {
                         await page.waitForTimeout(7000);
                         await page.keyboard.press('F5', {delay:1000});
                         let quebrarCaptcha = await page.solveRecaptchas();
-                        console.log(quebrarCaptcha);
+                        //console.log(quebrarCaptcha);
                         await page.click('#pbEnviar', { delay: 2000 });
                         await page.waitForTimeout(2000);
                         confirmCaptchaPresente = await page.evaluate(() =>{
