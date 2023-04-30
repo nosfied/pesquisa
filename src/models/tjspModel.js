@@ -97,7 +97,8 @@ exports.tjsp = async (dados) => {
             if(elemento) return elemento.textContent;
             return false;
         })
-        console.log(captchaPresente);
+        let captchaPresenteSemEspacos = captchaPresente.trim();
+        console.log(captchaPresenteSemEspacos);
         if(captchaPresente != false){
             let confirmCaptchaPresente = true;
             for (let index = 0; index < 6; index++) {
