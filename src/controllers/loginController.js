@@ -30,7 +30,11 @@ exports.login = async function(req, res){
 }
 
 exports.logout = function(req, res){
-    console.log(`USUÁRIO SAIU DO SISTEMA: ${Object.values(req.session.user)}`);
-    req.session.destroy();
-    res.redirect('/');
+    try {
+        console.log(`USUÁRIO SAIU DO SISTEMA: ${Object.values(req.session.user)}`);
+        req.session.destroy();
+        res.redirect('/');
+    } catch (error) {
+        res.redirect('/');        
+    }
 }
