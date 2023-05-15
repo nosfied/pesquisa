@@ -108,8 +108,7 @@ exports.tjce = async (dados) => {
                         
                     return document.querySelector("body > div:nth-child(17)").style.visibility;                    
                 })
-                console.log(telaCaptcha);
-    
+                console.log(telaCaptcha);    
                 if(telaCaptcha == 'visible') {        
                     console.log("TJCE: Processo interrompido pelo Captcha. Tentando solucionar...");            
                     let quebrarCaptcha = await page.solveRecaptchas();

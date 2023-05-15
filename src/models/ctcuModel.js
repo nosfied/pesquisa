@@ -95,8 +95,25 @@ exports.ctcu = async (dados) => {
                 await pag[2].waitForTimeout(3000);
                 await pag[2].click('#P3_CPF', { delay: 2000 });
                 await pag[2].keyboard.type(CPF, { delay: 150 });
-                await pag[2].click('#B29782782691410319827', { delay: 2000 });
-                await pag[2].waitForTimeout(7000);                
+                await pag[2].keyboard.press('Tab', { delay: 2000 });
+                await pag[2].keyboard.press('Tab', { delay: 2000 });
+                await pag[2].keyboard.press('Tab', { delay: 2000 });
+                await pag[2].keyboard.press('Space', { delay: 2000 });
+                await pag[2].waitForTimeout(3000);
+                let telaCaptcha = await pag[2].evaluate(async ()=>{        
+                        
+                    return document.querySelector("#t_PageBody > div:nth-child(11)").style.visibility;                    
+                })
+                console.log(telaCaptcha);
+                if(telaCaptcha == 'visible') {        
+                    console.log("TCU Inabilitados: Processo interrompido pelo Captcha. Tentando solucionar...");            
+                    let quebrarCaptcha = await pag[2].solveRecaptchas();
+                    //console.log(quebrarCaptcha);
+                    await pag[2].click('#B29782782691410319827', { delay: 2000 });
+                }else{
+                    await pag[2].click('#B29782782691410319827', { delay: 2000 });
+                }
+                await pag[2].waitForTimeout(9000);                
                 // Elemento presente?
                 let paginaCertidao = await pag[2].evaluate(() => {
                     const el = document.querySelector("#R20507205424713788697 > div.t-Region-bodyWrap > div.t-Region-body > div:nth-child(9) > a");
@@ -118,14 +135,17 @@ exports.ctcu = async (dados) => {
                         await pag[2].click('#P3_CPF', { delay: 2000 });
                         await pag[2].keyboard.type(CPF, { delay: 150 });
                         await pag[2].click('#B29782782691410319827', { delay: 2000 });
-                        await pag[2].waitForTimeout(7000);
+                        await pag[2].waitForTimeout(12000);
                         // Elemento presente?
                         paginaCertidao = await pag[2].evaluate(() => {
                             const el = document.querySelector('#R20507205424713788697 > div.t-Region-bodyWrap > div.t-Region-body > div:nth-child(9) > a');
-                            if (el)
-                                return el.tagName;
-                            else
+                            if (el) {
+                                console.log(el);
+                                return el.tagName;}
+                            else{
+                                console.log('não deu');
                                 return false;
+                            }
                         })
                         
                     }
@@ -162,7 +182,6 @@ exports.ctcu = async (dados) => {
                     //console.log(quebrarCaptcha);
                     await page.waitForTimeout(6000);
                     await page.focus('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
-                    //await page.click('#formEmitirCertidaoNadaConsta\\:txtCpfOuCnpj', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
                     await page.keyboard.press('Tab', { delay: 2000 });
