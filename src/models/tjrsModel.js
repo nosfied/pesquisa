@@ -52,7 +52,8 @@ exports.tjrs = async (dados) => {
         ignoreHTTPSErrors: true        
     
     });
-    const page = await browser.newPage();
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
                 
     try {                         
         await util.limparArquivosAntigos();        

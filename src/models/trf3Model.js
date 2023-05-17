@@ -66,7 +66,8 @@ exports.trf3 = async (dados) =>{
         defaultViewport: false,
         ignoreHTTPSErrors: true    
     });       
-    const page = await browser.newPage();    
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
     try {
         await util.limparArquivosAntigos();
         // let cookies = await pegarCookiesTrf3();

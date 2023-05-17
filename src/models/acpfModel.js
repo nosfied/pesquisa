@@ -51,7 +51,8 @@ exports.acpf = async (dados) => {
         ignoreHTTPSErrors: true        
     
     });
-    const page = await browser.newPage();                
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
     try {
         for (const tipo of TIPOS) {
             if (tipo == 'criminal' || tipo == 'civel') {
