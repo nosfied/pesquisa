@@ -48,16 +48,11 @@ exports.ctse = async (dados) => {
         executablePath: paths.googleChrome(),
         //userDataDir: paths.perfilChrome(),
         defaultViewport: false,
-        ignoreHTTPSErrors: true,
-        //args: [ `--proxy-server=zproxy.lum-superproxy.io:22225` ]        
+        ignoreHTTPSErrors: true,      
     
     });    
 
     const page = await browser.newPage();
-    // await page.authenticate({
-    //     username: process.env.USER,
-    //     password: process.env.PASS
-    // });
     try {                         
         for (const tipo of TIPOS) {
             if (tipo == 'situacao') {

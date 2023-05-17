@@ -41,9 +41,6 @@ exports.trf1 = async (dados) => {
         executablePath: paths.googleChrome(),
         //userDataDir: paths.perfilChrome()
     });
-    // let cookie = await util.pegarCookies(SITIOCOOKIES);
-    // const cookies = [{name: 'cookie', value: `${cookie}`, domain: 'https://sistemas.trf1.jus.br/certidao/#/solicitacao'}];
-    // console.log(cookies);
 
     const page = await browser.newPage();
     try {

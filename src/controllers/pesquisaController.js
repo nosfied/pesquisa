@@ -1,3 +1,5 @@
+const util = require('../util/util');
+
 const Trf1 = require('../models/trf1Model');
 const Trf2 = require('../models/trf2Model');
 const Trf3 = require('../models/trf3Model');
@@ -38,6 +40,8 @@ const ERRONAOSELECT = "É preciso selecionar ao menos um documento para pesquisa
 const ERRONOMECOMPLETO = "É preciso digitar o nome COMPLETO, inclusive com acentos.";
 const ERROCPF = "O CPF digitado é inválido.";
 
+let contador;
+
 exports.trf1 = async (req, res) => {
     
     let error = [];
@@ -60,8 +64,13 @@ exports.trf1 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Trf1.trf1(req.body);
         res.json(result);
+        contador--;
     } 
       
 }
@@ -88,8 +97,13 @@ exports.trf2 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Trf2.trf2(req.body);
         res.json(result);
+        contador--;        
     } 
       
 }
@@ -116,8 +130,13 @@ exports.trf3 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Trf3.trf3(req.body);
         res.json(result);
+        contador--;         
     } 
       
 }
@@ -144,8 +163,13 @@ exports.trf4 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Trf4.trf4(req.body);
         res.json(result);
+        contador--;
     } 
       
 }
@@ -172,8 +196,13 @@ exports.trf5 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Trf5.trf5(req.body);
         res.json(result);
+        contador--;        
     } 
       
 }
@@ -204,8 +233,13 @@ exports.tjdf = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Tjdf.tjdf(req.body);
         res.json(result);
+        contador--;         
     } 
       
 }
@@ -256,8 +290,13 @@ exports.tjms = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Tjms.tjms(req.body);
         res.json(result);
+        contador--;        
     }        
       
 }
@@ -300,8 +339,13 @@ exports.tjsp = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Tjsp.tjsp(req.body);
         res.json(result);
+        contador--;        
     }        
       
 }
@@ -319,10 +363,6 @@ exports.tjsc = async (req, res) => {
     if(req.body.nome == ""){
         error.push(ERRONOMECOMPLETO); 
     }
-
-    // if(!req.body.comarca){
-    //     error.push('É preciso selecionar uma Comarca.'); 
-    // }
 
     if(!req.body.sexo){
         error.push('É preciso selecionar o Sexo.'); 
@@ -356,8 +396,13 @@ exports.tjsc = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Tjsc.tjsc(req.body);
         res.json(result);
+        contador--;        
     }        
       
 }
@@ -416,8 +461,13 @@ exports.tjrs = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
+        while (contador > 3) {
+            util.sleep(20000);
+        }
+        contador++;
         const result = await Tjrs.tjrs(req.body);
         res.json(result);
+        contador--;        
     }        
       
 }
