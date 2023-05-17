@@ -53,7 +53,8 @@ exports.ctse = async (dados) => {
     
     });    
 
-    const page = await browser.newPage();
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
     // await page.authenticate({
     //     username: process.env.USER,
     //     password: process.env.PASS

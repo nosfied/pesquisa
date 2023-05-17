@@ -47,7 +47,8 @@ exports.tjma = async (dados) => {
         ignoreHTTPSErrors: true        
     
     });
-    const page = await browser.newPage();                
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
     try {
         let nPedido;
         let diretorio;
