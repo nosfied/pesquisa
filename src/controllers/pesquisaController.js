@@ -39,6 +39,7 @@ const path = require('path');
 const ERRONAOSELECT = "É preciso selecionar ao menos um documento para pesquisa.";
 const ERRONOMECOMPLETO = "É preciso digitar o nome COMPLETO, inclusive com acentos.";
 const ERROCPF = "O CPF digitado é inválido.";
+const LIMITE = 6;
 
 let contador;
 
@@ -64,7 +65,7 @@ exports.trf1 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -97,7 +98,7 @@ exports.trf2 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -130,7 +131,7 @@ exports.trf3 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -163,7 +164,7 @@ exports.trf4 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -196,7 +197,7 @@ exports.trf5 = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -233,7 +234,7 @@ exports.tjdf = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -290,7 +291,7 @@ exports.tjms = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -339,7 +340,7 @@ exports.tjsp = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -396,7 +397,7 @@ exports.tjsc = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -461,7 +462,7 @@ exports.tjrs = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -518,7 +519,7 @@ exports.tjba = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -567,7 +568,7 @@ exports.tjpi = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -620,7 +621,7 @@ exports.tjal = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -669,7 +670,7 @@ exports.tjap = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -714,7 +715,7 @@ exports.tjce = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -751,7 +752,7 @@ exports.tjes = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -792,7 +793,7 @@ exports.tjgo = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -825,7 +826,7 @@ exports.tjrr = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -855,7 +856,7 @@ exports.tjto = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -884,7 +885,7 @@ exports.tjro = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -925,7 +926,7 @@ exports.tjam = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -967,7 +968,7 @@ exports.tjac = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1000,7 +1001,7 @@ exports.tjmt = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1053,7 +1054,7 @@ exports.tjpe = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1090,7 +1091,7 @@ exports.tjma = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1123,7 +1124,7 @@ exports.tjse = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1164,7 +1165,7 @@ exports.tjpa = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1209,7 +1210,7 @@ exports.tjrn = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1266,7 +1267,7 @@ exports.tjpb = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1319,7 +1320,7 @@ exports.acpf = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1360,7 +1361,7 @@ exports.ctse = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1389,7 +1390,7 @@ exports.ctcu = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1418,7 +1419,7 @@ exports.crf = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
@@ -1459,7 +1460,7 @@ exports.stm = async (req, res) => {
     if(error != ''){
         res.json({ erroValid: error })
     }else{
-        while (contador > 20) {
+        while (contador > LIMITE) {
             util.sleep(20000);
         }
         contador++;
