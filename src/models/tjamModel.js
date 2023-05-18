@@ -41,7 +41,7 @@ exports.tjam = async (dados) => {
     let resultado = [];
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         executablePath: paths.googleChrome(),
         //userDataDir: paths.perfilChrome(),
         defaultViewport: false,
