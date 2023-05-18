@@ -66,28 +66,9 @@ exports.trf3 = async (dados) =>{
         defaultViewport: false,
         ignoreHTTPSErrors: true    
     });       
-    const context = await browser.createIncognitoBrowserContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
     try {
-        await util.limparArquivosAntigos();
-        // let cookies = await pegarCookiesTrf3();
-        // console.log(cookies);    
-        // await page.setRequestInterception(true);    
-        // await page.on('request', request => {
-        //     //Adicionar cookie válido à requisição para simular a primeira tentativa.
-        //     request.continue({
-
-        //         "headers": {
-                
-        //             "cookie" : `${cookies}`
-        //             //`${cookies}`            
-        //         }                            
-
-        //     });        
-                
-        // });
-        //Alterar User-Agent para como se fosse um navegador com headless:false a fim de evitar Access Denied
-        //await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36');    
+        await util.limparArquivosAntigos();            
         await page.goto(SITE_URL);
         await page.waitForTimeout(3000);
         await page.click('body > div.cc-window.cc-banner.cc-type-info.cc-theme-classic.cc-bottom.cc-color-override--816177166 > div > a', { delay: 2000 });        

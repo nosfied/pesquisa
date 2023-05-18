@@ -38,8 +38,7 @@ exports.trf2 = async (dados) =>{
         //userDataDir: paths.perfilChrome()
 
     });
-    const context = await browser.createIncognitoBrowserContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
     try {
         await util.limparArquivosAntigos();
         await page.goto(SITE_URL);

@@ -39,8 +39,7 @@ exports.trf4 = async (dados) => {
         ignoreHTTPSErrors: true        
     
     });       
-    const context = await browser.createIncognitoBrowserContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
     try {
         await util.limparArquivosAntigos();
         await page.goto(SITE_URL);        
@@ -56,7 +55,7 @@ exports.trf4 = async (dados) => {
 
         let telaCaptcha = await page.evaluate(async ()=>{        
                         
-            return document.querySelector("body > div:nth-child(6)").style.visibility;                    
+            return document.querySelector("body > div:nth-child(5)").style.visibility;                    
         })
         console.log(telaCaptcha);
     

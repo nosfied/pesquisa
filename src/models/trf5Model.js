@@ -31,8 +31,7 @@ exports.trf5 = async (dados) => {
     
     });
 
-    const context = await browser.createIncognitoBrowserContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
     try {     
         await util.limparArquivosAntigos();    
         await page.goto(SITE_URL, {waitUntil: 'networkidle2'});

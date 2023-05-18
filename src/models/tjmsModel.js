@@ -51,8 +51,7 @@ exports.tjms = async (dados) => {
         ignoreHTTPSErrors: true        
     
     });
-    const context = await browser.createIncognitoBrowserContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
                 
     try {
         for (const tipo of TIPOS) {

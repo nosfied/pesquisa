@@ -38,7 +38,14 @@ async function curl(options){
 
 }
 
-exports.resolve_captcha_normal = async function (imagem){
+exports.aguardar = async function(millisecondsCount) {
+    if (!millisecondsCount) {
+        return;
+    }
+    return new Promise(resolve => setTimeout(resolve, millisecondsCount)).catch();
+}
+
+exports.resolve_captcha_normal = async function (imagem) {
     
     const KEY_2CAPTCHA = `${process.env.KEY}`;
     let url = `http://2captcha.com/in.php`;    
