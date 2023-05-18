@@ -230,7 +230,7 @@ for (const btao of botoesOrgao) {
           } catch(e) {
             btao.disabled = false;
             console.log(e.message);
-            document.location.reload();            
+            //document.location.reload();            
           }           
 
     })
