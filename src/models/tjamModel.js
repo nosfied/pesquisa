@@ -98,6 +98,7 @@ exports.tjam = async (dados) => {
             await page.focus('#confirmacaoInformacoes', { delay: 3000 });                           
             await page.keyboard.press('Space', {delay:1000});           
             //await page.click('#confirmacaoInformacoes', { delay: 3000 });                           
+            await page.focus('#pbEnviar', { delay: 1000 });
             await page.click('#pbEnviar', { delay: 1000 });
         } else {
             await page.click('#confirmacaoInformacoes', { delay: 3000 });                           
