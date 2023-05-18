@@ -39,7 +39,7 @@ const path = require('path');
 const ERRONAOSELECT = "É preciso selecionar ao menos um documento para pesquisa.";
 const ERRONOMECOMPLETO = "É preciso digitar o nome COMPLETO, inclusive com acentos.";
 const ERROCPF = "O CPF digitado é inválido.";
-const LIMITE = 12;
+const LIMITE = 6;
 const AGUARDAR = 20000;
 
 let contador = 0;
