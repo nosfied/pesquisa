@@ -55,10 +55,14 @@ exports.trf4 = async (dados) => {
 
         let telaCaptcha = await page.evaluate(async ()=>{        
                         
-            return document.querySelector("body > div:nth-child(5)").style.visibility;                    
+            let el = document.querySelector("body > div:nth-child(5)").style.visibility;
+            if (el) {
+                return el;
+            } else {
+                return document.querySelector("body > div:nth-child(6)").style.visibility;
+            }                    
         })
-        console.log(telaCaptcha);
-    
+        console.log(telaCaptcha);    
         if(telaCaptcha == 'visible') {        
             console.log("TRF4: Processo interrompido pelo Captcha. Tentando solucionar...");            
             let quebrarCaptcha = await page.solveRecaptchas();
