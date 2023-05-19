@@ -31,7 +31,7 @@ const sessionOptions = session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60* 60 * 24,
+      maxAge: 1000 * 60,
       httpOnly: true
     }
   });
@@ -46,7 +46,8 @@ app.use(csrf());
 
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
-app.use(csrfMiddleware);app.use(routes);
+app.use(csrfMiddleware);
+app.use(routes);
 
 app.on('pronto', () => {
     app.listen(4000, () => {
