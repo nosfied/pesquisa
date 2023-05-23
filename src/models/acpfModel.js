@@ -84,7 +84,7 @@ exports.acpf = async (dados) => {
                 await page.keyboard.press('Space', {delay:2000});
                 let telaCaptcha = await page.evaluate(async ()=>{        
                         
-                    return document.querySelector("body > div:nth-child(7)").style.visibility;                    
+                    return document.querySelector("body > div:nth-child(10)").style.visibility;                    
                 })
                 console.log(telaCaptcha);    
                 if(telaCaptcha == 'visible') {        
