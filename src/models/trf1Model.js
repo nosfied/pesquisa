@@ -48,7 +48,7 @@ exports.trf1 = async (dados) => {
         //await page.setCookie(...cookies);        
         await page.goto(SITE_URL, { waitUntil: 'networkidle2', timeout: 60000 });
         //escolher opção -> criminal            
-        await page.click('#mat-select-0 > div > div.mat-select-value.ng-tns-c86-2 > span', { delay: 2000 });
+        await page.click('#mat-select-0 > div > div.mat-select-value.ng-tns-c89-2 > span', { delay: 2000 });
         //selecionar um órgão -> clique        
         await page.click('#mat-option-2 > span', { delay: 2000 });
         //escolher opção -> regionalizada 1 e 2 grau
@@ -57,12 +57,12 @@ exports.trf1 = async (dados) => {
         await page.click('#mat-option-19 > span', { delay: 2000 });
         await page.waitForTimeout(2000);
         //Clicar no campo CPF
-        await page.click('body > pgp-root > mat-drawer-container > mat-drawer-content > pgp-certidao > div > div > pgp-solicitacao-certidao > mat-card.mat-card.mat-focus-indicator.first-card.mat-elevation-z12 > mat-card-title > mat-card-title', { delay: 2000 });
+        await page.click('body > pgp-root > mat-drawer-container > mat-drawer-content > pgp-certidao > div > div > pgp-solicitacao-certidao > div > mat-card.mat-card.mat-focus-indicator.first-card.mat-elevation-z12 > mat-card-title > mat-card-title', { delay: 2000 });
         await page.click('#mat-input-0', { delay: 2000 });
         //Digitar o número do documento
         await page.keyboard.type(CPF, { delay: 200 });
         // Clicar no botão -> "Emitir certidão"               
-        await page.click('body > pgp-root > mat-drawer-container > mat-drawer-content > pgp-certidao > div > div > pgp-solicitacao-certidao > mat-card.mat-card.mat-focus-indicator.first-card.mat-elevation-z12 > form > mat-card-actions > div > button > span', { delay: 3000 });
+        await page.click('body > pgp-root > mat-drawer-container > mat-drawer-content > pgp-certidao > div > div > pgp-solicitacao-certidao > div > mat-card.mat-card.mat-focus-indicator.first-card.mat-elevation-z12 > form > mat-card-actions > div > button', { delay: 3000 });
         await page.waitForTimeout(20000);
         // Elemento presente?
         let botaoPaginaCertidao = await page.$x('/html/body/pgp-root/mat-drawer-container/mat-drawer-content/pgp-certidao/div/div/pgp-certidao-viewer/div/button');
@@ -73,7 +73,7 @@ exports.trf1 = async (dados) => {
             await page.waitForTimeout(5000);
             for (let index = 0; index < 8; index++) {
                 if (botaoPaginaCertidao != '') continue;                
-                await page.click('body > pgp-root > mat-drawer-container > mat-drawer-content > pgp-certidao > div > div > pgp-solicitacao-certidao > mat-card.mat-card.mat-focus-indicator.first-card.mat-elevation-z12 > form > mat-card-actions > div > button > span', { delay: 2000 });
+                await page.click('body > pgp-root > mat-drawer-container > mat-drawer-content > pgp-certidao > div > div > pgp-solicitacao-certidao > div > mat-card.mat-card.mat-focus-indicator.first-card.mat-elevation-z12 > form > mat-card-actions > div > button', { delay: 2000 });
                 console.log(index);
                 await page.waitForTimeout(20000);
                 botaoPaginaCertidao = await page.$x('/html/body/pgp-root/mat-drawer-container/mat-drawer-content/pgp-certidao/div/div/pgp-certidao-viewer/div/button');
